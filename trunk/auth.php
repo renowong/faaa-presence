@@ -1,6 +1,6 @@
 <?php
 include_once('config.php');
-//header('Content-Type: text/xml');
+header('Content-Type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 echo '<response>';
 echo query();
@@ -30,7 +30,7 @@ function query() {
 				"<login>" . $row->userlogin . "</login>".
 				"<password>" . $row->userpassword . "</password>".
 				"<nom>" . $row->userlastname . "</nom>".
-				"<prenom>" . $row->userfirstname . "</prenom>";
+				"<prenom>" . $row->userfirstname . "</prenom></user>";
 			}
 		} else {
 			echo $mysqli->error;

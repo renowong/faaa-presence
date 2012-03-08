@@ -19,14 +19,27 @@ include_once('config.php');
 			var password = $("#password").val();
 			$.post("auth.php", {login:login,password:password},
 			function(response) {
-			//readresponse(response);
-			alert(response);
-			});
+			readresponse(response);
+			//alert(response);
+			},'xml');
 		}
 		
 		function reset() {
 			$("#login").val("");
 			$("#password").val("");	
+		}
+		
+		function readresponse(xml){
+			$(xml).find("response").each(function(){
+			    var access = $(this).find("access").text();
+			    alert(access);
+			    if(access=="OK"){
+				alert("access ok");
+				//setTimeout("redirect('presence.php')",1000);
+			    }else{
+				alert("access not ok");
+			    }
+			});
 		}
 		</script>
 	</head>
