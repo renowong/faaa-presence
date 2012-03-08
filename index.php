@@ -32,12 +32,12 @@ include_once('config.php');
 		function readresponse(xml){
 			$(xml).find("response").each(function(){
 			    var access = $(this).find("access").text();
-			    alert(access);
+			    //alert(access);
 			    if(access=="OK"){
-				alert("access ok");
-				//setTimeout("redirect('presence.php')",1000);
+				//alert("access ok");
+				window.location = "presence.php";
 			    }else{
-				alert("access not ok");
+				alert(access);
 			    }
 			});
 		}
