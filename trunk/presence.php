@@ -56,12 +56,12 @@ function buildcol($input,$id,$month,$year){
             break;
             case "hd":
                 print "<td>";
-                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" id=\"hd_".$id."_".$i."\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);\" />";
                 print "</td>";
             break;
             case "ha":
                 print "<td>";
-                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" id=\"ha_".$id."_".$i."\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);\" />";
                 print "</td>";
             break;
         }
@@ -76,7 +76,6 @@ function WE($day,$month,$year){
         return false;
     }
 }
-
 
 ?>
 
@@ -95,6 +94,24 @@ function WE($day,$month,$year){
             var month = $("#slt_month").val();
             var year = $("#slt_annee").val();
             window.location = "presence.php?load=true&month="+month+"&year="+year;
+        }
+        
+        function update(field){
+            var fname = field.name;
+            var fvalue = $("#"+fname).val();
+            var editmonth = $("#editmonth").val();
+            var edityear = $("#edityear").val();
+            var arr = fname.split("_");
+            var type = arr[0];
+            var agentid = arr[1];
+            var editday = arr[2];
+            
+            $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
+			function(response) {
+			//readresponse(response);
+			alert(response);
+			});
+            
         }
     </script>
 </head><body>
