@@ -18,7 +18,7 @@ include_once('presence_top.php');
         for(i=0;i<ar_ids.length;i++){
             getdata($("#editmonth").val(),$("#edityear").val(),ar_ids[i]);
         }
-        
+       
         });
         
         
@@ -38,6 +38,9 @@ include_once('presence_top.php');
                 var tag = $(this).attr("idtag");
                 var value = $(this).text();
                 $("#"+tag).val(value);
+                //alert(tag);
+                calc(tag);
+                
              });
         }
         
@@ -56,13 +59,75 @@ include_once('presence_top.php');
             var type = arr[0];
             var agentid = arr[1];
             var editday = arr[2];
+            //if(fvalue!=""){
+                if(checkvalid(fvalue)){
+                    $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
+                            function(response) {
+                            //readresponse(response);
+                            //alert(response);
+                            });
+                }else{
+                    alert("Entr\351e invalide!");
+                    $("#"+fname).val("");
+                }                
+            //}
+        }
+        
+        function checkvalid(input){
+            var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+            var pattern2 = /^(CP|AB|AM|CM|AT|CF|)$/;
+            if(pattern.test(input) || pattern2.test(input)){
+                return true;}else{return false;}
+        }
+        
+        function calc(field){
+            var suffix = field.substring(2);
+            var ha = $("#ha"+suffix).val();
+            var hd = $("#hd"+suffix).val();
+            var month = $("#slt_month").val();
+            var year = $("#slt_annee").val();
+            var day = suffix.substring(1);
+            day = day.split("_");
+            var d = new Date(year, month, day[1]);
+
+            if(ha=="CP" || ha=="AM" || ha=="CM" || ha=="CF") {ha="7:30";}
+            if(hd=="CP" || hd=="AM" || hd=="CM" || hd=="CF") {
+                if(d.getDay()=="1"){
+                    hd="14:30";
+                }else{
+                    hd="15:30";
+                }
+            }
+            var tt = new Date('01/01/2009 ' + hd)-new Date('01/01/2009 ' + ha);
+            tt = tt/1000; //convert to seconds
+            $("#tt"+suffix).val(tt);
+            total(suffix);
+        }
+        
+        function total(suffix){
+            var id = suffix.substring(1);
+            var explode = id.split("_");
+            var total = 0;
+            var tt;
+            var heures=0;
+            var minutes=0;
+            var output;
+            id = explode[0];
             
-            $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
-			function(response) {
-			//readresponse(response);
-			//alert(response);
-			});
-            
+            for(i=1;i<32;i++){
+                tt = $("#tt_"+id+"_"+i).val();
+                
+                if(tt==undefined || tt==""){tt=0;}
+                total += tt*1;
+            }
+            minutes = total/60;
+            if(minutes>=60){
+                heures = minutes/60;
+                minutes = minutes%60;
+            }
+            if(minutes<10) minutes = "0"+minutes;
+            output = heures+":"+minutes;
+            $("#total_"+id).html(output);
         }
     </script>
 </head><body>
@@ -79,6 +144,7 @@ Ann&eacute;e :
 </select>
 <button onclick="loaddate();">Charger</button>
 </p>
+<form>
 <table>
   <tbody>
     <tr>
@@ -109,5 +175,6 @@ Ann&eacute;e :
     ?>
   </tbody>
 </table>
+</form>
 <br>
 </body></html>

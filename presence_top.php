@@ -28,7 +28,8 @@ function buildmonths($s){
     $ar_month = array(1=>'Janvier',2=>'F&eacute;vrier',3=>'Mars',4=>'Avril',5=>'Mai',6=>'Juin',7=>'Juillet',8=>'Ao&ucirc;t',9=>'Septembre',10=>'Octobre',11=>'Novembre',12=>'D&eacute;cembre');
     for ($i=1;$i<=12;$i++){
         if($s==$i){$select=" selected";}else{$select="";}
-        $output .= "<option value=\"".$i."\"$select>".$ar_month[$i]."</option>";
+        if($i<10) {$j = "0".$i;}else{$j=$i;}
+        $output .= "<option value=\"".$j."\"$select>".$ar_month[$i]."</option>";
     }
     //$output = print_r($ar_month);
     return $output;
@@ -68,12 +69,12 @@ function buildcol($input,$id,$month,$year){
             break;
             case "hd":
                 print "<td>";
-                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
                 print "</td>";
             break;
             case "ha":
                 print "<td>";
-                if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" size=\"2\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
                 print "</td>";
             break;
         }
