@@ -49,7 +49,7 @@ function getagents($svc){
         $ar_agent = array();
     	$mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
 	////set the query
-	$query = sprintf("SELECT * FROM `agents` WHERE `service`='%s'","INF");
+	$query = sprintf("SELECT * FROM `agents` WHERE `service`='%s' AND `active`='1'","INF");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
         array_push($ar_agent,array($row->agentid,$row->nom,$row->prenom));            

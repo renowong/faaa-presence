@@ -41,6 +41,13 @@ include_once('config.php');
 			    }
 			});
 		}
+		
+		function checkenter(e){
+			var unicode=e.keyCode? e.keyCode : e.charCode
+			if(unicode=="13"){
+			    auth();
+			}
+		}
 		</script>
 	</head>
 	<body onload="document.getElementById('login').focus();">
@@ -55,10 +62,10 @@ include_once('config.php');
 				</thead>
 				<tbody>
 					<tr>
-						<td>Utilisateur</td><td class="inputbox"><input type="text" name="login" id="login" value="" maxlength="10" size="20" /></td>
+						<td>Utilisateur</td><td class="inputbox"><input type="text" name="login" id="login" value="" maxlength="10" size="20" onkeydown="checkenter(event);"/></td>
 					</tr>
 					<tr>
-						<td>Mot de passe</td><td class="inputbox" ><input type="password" name="password" id="password"value="" maxlength="10" size="20" /></td>
+						<td>Mot de passe</td><td class="inputbox" ><input type="password" name="password" id="password"value="" maxlength="10" size="20" onkeydown="checkenter(event);"/></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="inputbox"><input type="button" name="reset" id="reset" value="Annuler" onclick="reset()" /><input type="button" name="submit" id="submit" value="Entrer" onclick="auth()" /></td>
