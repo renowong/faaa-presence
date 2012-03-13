@@ -11,7 +11,11 @@ include_once('config.php');
 		<script type="application/x-javascript" src="js/jquery-1.7.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function () {
-                
+			document.cookie = "user=";
+			document.cookie = "nom=";
+			document.cookie = "prenom=";
+			document.cookie = "login=";
+			document.cookie = "svc=";
 		});
 		
 		function auth(){
