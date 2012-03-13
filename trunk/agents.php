@@ -41,8 +41,10 @@ include_once('menu.php');
             var prenom = $("#txt_prenom").val();
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
+            var actif;
+            if($("#chk_actif").attr("checked")=="checked"){actif=1;}else{actif=0;};
             
-            $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc},
+            $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc,actif:actif},
                 function(response) {
                 //readresponse(response);
                 //alert(response);
@@ -59,9 +61,11 @@ include_once('menu.php');
         
         function load_agent(data){
             var ar_data = data.split("_");
+            var active = ar_data[4];
             $("#editid").val(ar_data[0]);
             $("#txt_nom").val(ar_data[1]);
             $("#txt_prenom").val(ar_data[2]);
+            if(active==1){$("#chk_actif").attr("checked", true);}else{$("#chk_actif").attr("checked", false);}
             //$('#slt_services')
             //    .prepend($("<option></option>")
             //    .attr("value",ar_data[3])
@@ -93,6 +97,7 @@ include_once('menu.php');
             <div id='editagent'>
                 <h1>Edition</h1>
                 <input type='hidden' id='editid' name='editid'/>
+                Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/>
                 Nom : <input type='text' id='txt_nom' name='txt_nom' /><br/>
                 Prenom : <input type='text' id='txt_prenom' name='txt_prenom' /><br/>
                 Service : <select id='slt_services' name='slt_services'>

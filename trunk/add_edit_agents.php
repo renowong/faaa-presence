@@ -5,31 +5,32 @@ include_once('config.php');
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $svc = $_POST['svc'];
+    $actif = $_POST['actif'];
     
     if($id>0){
-        print update($id,$nom,$prenom,$svc); 
+        print update($id,$nom,$prenom,$svc,$actif); 
     }else{
-       print insert($nom,$prenom,$svc); 
+       print insert($nom,$prenom,$svc,$actif); 
     }
     
 
     
-function update($id,$nom,$prenom,$svc){
+function update($id,$nom,$prenom,$svc,$actif){
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
     ////set the query
-    $query = sprintf("UPDATE `agents` SET `nom`='%s',`prenom`='%s',`service`='%s' WHERE `agentid`='%s'"
-                     ,$nom,$prenom,$svc,$id);
+    $query = sprintf("UPDATE `agents` SET `nom`='%s',`prenom`='%s',`service`='%s',`active`='%s' WHERE `agentid`='%s'"
+                     ,$nom,$prenom,$svc,$actif,$id);
     $mysqli->query($query);
     $mysqli->close();
     return $query;
 }
 
 
-function insert($nom,$prenom,$svc){
+function insert($nom,$prenom,$svc,$actif){
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
     ////set the query
-    $query = sprintf("INSERT INTO `agents` (`nom`,`prenom`,`service`) VALUES ('%s','%s','%s')"
-                     ,$nom,$prenom,$svc);
+    $query = sprintf("INSERT INTO `agents` (`nom`,`prenom`,`service`,`active`) VALUES ('%s','%s','%s','%s')"
+                     ,$nom,$prenom,$svc,$actif);
     $mysqli->query($query);
     $mysqli->close();
     return $query;
