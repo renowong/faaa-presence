@@ -36,7 +36,7 @@ function getagents(){
 	$query = sprintf("SELECT * FROM `agents` ORDER BY `nom`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->agentid."'>".$row->nom." ".$row->prenom." (".$row->service.")</option><br/>";            
+        $output .= "<option value='".$row->agentid."_".$row->nom."_".$row->prenom."_".$row->service."'>".$row->nom." ".$row->prenom." (".$row->service.")</option><br/>";            
         }
         $mysqli->close();
         

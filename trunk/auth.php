@@ -23,14 +23,15 @@ function query() {
 				return "<access>Utilisateur non-autorisé</access><user><login></login>".
 				"<password></password>".
 				"<nom></nom>".
-				"<prenom></prenom></user>";
+				"<prenom></prenom><svc></svc></user>";
 			} else {
 				$row = $result->fetch_object();
 				return "<access>OK</access><user><userid>" . $row->userid . "</userid>".
 				"<login>" . $row->userlogin . "</login>".
 				"<password>" . $row->userpassword . "</password>".
 				"<nom>" . $row->userlastname . "</nom>".
-				"<prenom>" . $row->userfirstname . "</prenom></user>";
+				"<prenom>" . $row->userfirstname . "</prenom>".
+				"<svc>" . $row->userservice . "</svc></user>";
 			}
 		} else {
 			echo $mysqli->error;

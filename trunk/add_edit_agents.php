@@ -7,22 +7,22 @@ include_once('config.php');
     $svc = $_POST['svc'];
     
     if($id>0){
-        
+        print update($id,$nom,$prenom,$svc); 
     }else{
        print insert($nom,$prenom,$svc); 
     }
     
 
     
-//function update($value,$presenceid){
-//    $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
-//    ////set the query
-//    $query = sprintf("UPDATE `presence` SET `value`='%s' WHERE `presenceid`='%s'"
-//                     ,$value,$presenceid);
-//    $mysqli->query($query);
-//    $mysqli->close();
-//    return $query;
-//}
+function update($id,$nom,$prenom,$svc){
+    $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
+    ////set the query
+    $query = sprintf("UPDATE `agents` SET `nom`='%s',`prenom`='%s',`service`='%s' WHERE `agentid`='%s'"
+                     ,$nom,$prenom,$svc,$id);
+    $mysqli->query($query);
+    $mysqli->close();
+    return $query;
+}
 
 
 function insert($nom,$prenom,$svc){

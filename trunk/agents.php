@@ -34,15 +34,35 @@ include_once('agents_top.php');
         
         function update_agent(){
             var nom = $("#txt_nom").val();
-            var prenom = $("#txt_nom").val();
+            var prenom = $("#txt_prenom").val();
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
             
             $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc},
                 function(response) {
                 //readresponse(response);
-                alert(response);
+                //alert(response);
                 });
+            window.location = 'agents.php';
+        }
+        
+        function init_edit(){
+            $("#txt_nom").val('');
+            $("#txt_prenom").val('');
+            $("#editid").val('');
+            $("#slt_services option:eq(0)").attr("selected", "selected");
+        }
+        
+        function load_agent(data){
+            var ar_data = data.split("_");
+            $("#editid").val(ar_data[0]);
+            $("#txt_nom").val(ar_data[1]);
+            $("#txt_prenom").val(ar_data[2]);
+            //$('#slt_services')
+            //    .prepend($("<option></option>")
+            //    .attr("value",ar_data[3])
+            //    .text(ar_data[3]));
+            $("#slt_services").val(ar_data[3]).attr("selected", "selected");
         }
     </script>
 </head><body>
@@ -58,19 +78,19 @@ include_once('agents_top.php');
         <td>
             <h1>Gestion Agents</h1>
             Edition
-            <select id='slt_agents'>
+            <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
                 <option>Selectionner Agent</option>
                 <? print $agents ?>
             </select>
             <br/>
-            <button>Ajouter Nouvel Agent</button>
+            <button onclick='init_edit();'>Ajouter Nouvel Agent</button>
             <hr/>
             <div id='editagent'>
                 <h1>Edition</h1>
                 <input type='hidden' id='editid' name='editid'/>
                 Nom : <input type='text' id='txt_nom' name='txt_nom' /><br/>
                 Prenom : <input type='text' id='txt_prenom' name='txt_prenom' /><br/>
-                <select id='slt_services' name='slt_services'>
+                Service : <select id='slt_services' name='slt_services'>
                 <? print $lst_services ?>
                 </select>
                 <br/>

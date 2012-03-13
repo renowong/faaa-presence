@@ -32,9 +32,19 @@ include_once('config.php');
 		function readresponse(xml){
 			$(xml).find("response").each(function(){
 			    var access = $(this).find("access").text();
-			    //alert(access);
+			    var id = $(this).find("userid").text();
+			    var login = $(this).find("login").text();
+			    var nom = $(this).find("nom").text();
+			    var prenom = $(this).find("prenom").text();
+			    var svc = $(this).find("svc").text();
+			    //alert(svc);
 			    if(access=="OK"){
 				//alert("access ok");
+				document.cookie = "user="+id;
+				document.cookie = "nom="+nom;
+				document.cookie = "prenom="+prenom;
+				document.cookie = "login="+login;
+				document.cookie = "svc="+svc;
 				window.location = "presence.php";
 			    }else{
 				alert(access);
