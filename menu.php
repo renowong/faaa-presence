@@ -3,6 +3,7 @@ $menu="<div class=\"horizontalcssmenu\">".
 "<ul id=\"cssmenu1\">".
 "<li style=\"border-left: 1px solid #202020;\"><a href=\"index.php\">Quitter</a></li>".
 "<li><a href=\"agents.php\" >Gestion Agents</a></li>".
+"<li><a href=\"admins.php\" >Gestion Admins</a></li>".
 "<br style=\"clear: left;\" /><br/>".
 "</div>";
 
