@@ -1,4 +1,5 @@
 <?php
+if($_COOKIE['user']==''){header("Location: index.php");}
 
 if($_GET["load"]){
     $selectedmonth = $_GET["month"];

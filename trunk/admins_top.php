@@ -1,4 +1,5 @@
 <?php
+if($_COOKIE['user']==''){header("Location: index.php");}
 
 $lst_services = getlist_services();
 $users = getusers();

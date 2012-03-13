@@ -1,4 +1,5 @@
 <?php
+if($_COOKIE['user']==''){header("Location: index.php");}
 include_once('config.php');
 
     $year = $_POST['year'];
