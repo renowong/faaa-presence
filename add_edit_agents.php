@@ -2,8 +2,8 @@
 include_once('config.php');
     
     $id = $_POST['id'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
+    $nom = strtoupper($_POST['nom']);
+    $prenom = ucfirst($_POST['prenom']);
     $svc = $_POST['svc'];
     $actif = $_POST['actif'];
     

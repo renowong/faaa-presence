@@ -2,9 +2,9 @@
 include_once('config.php');
     
     $id = $_POST['id'];
-    $login = $_POST['login'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
+    $login = strtolower($_POST['login']);
+    $nom = strtoupper($_POST['nom']);
+    $prenom = ucfirst($_POST['prenom']);
     $svc = $_POST['svc'];
     $actif = $_POST['actif'];
     

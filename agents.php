@@ -98,8 +98,8 @@ include_once('menu.php');
                 <h1>Edition</h1>
                 <input type='hidden' id='editid' name='editid'/>
                 Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/>
-                Nom : <input type='text' id='txt_nom' name='txt_nom' /><br/>
-                Prenom : <input type='text' id='txt_prenom' name='txt_prenom' /><br/>
+                Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;'/><br/>
+                Prenom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;'/><br/>
                 Service : <select id='slt_services' name='slt_services'>
                 <? print $lst_services ?>
                 </select>
