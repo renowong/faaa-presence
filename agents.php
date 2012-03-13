@@ -31,8 +31,9 @@ include_once('menu.php');
             $.post("addservice.php", {s:s},
                 function(response) {
                 //readresponse(response);
-                alert(response);
+                //alert(response);
                 });
+            window.location = 'agents.php';
         }
         
         function update_agent(){
