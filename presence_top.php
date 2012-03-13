@@ -8,7 +8,8 @@ if($_GET["load"]){
     $selectedyear = date("Y"); 
 }
 
-$ar_agents = getagents();
+$service = $_COOKIE['svc'];
+$ar_agents = getagents($service);
 $months = buildmonths($selectedmonth);
 $years = buildyears($selectedyear);
 $agentsids = buildagentsids($ar_agents);
@@ -49,7 +50,7 @@ function getagents($svc){
         $ar_agent = array();
     	$mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
 	////set the query
-	$query = sprintf("SELECT * FROM `agents` WHERE `service`='%s' AND `active`='1'","INF");
+	$query = sprintf("SELECT * FROM `agents` WHERE `service`='%s' AND `active`='1'",$svc);
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
         array_push($ar_agent,array($row->agentid,$row->nom,$row->prenom));            
