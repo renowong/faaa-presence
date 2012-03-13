@@ -1,11 +1,14 @@
 <?php
 include_once('config.php');
 include_once('presence_top.php');
+include_once('menu.php');
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
 <title></title>
+    <link rel="stylesheet" type="text/css" href="css/csshorizontalmenu.css" />
+    <script type="text/javascript" src="js/csshorizontalmenu.js"></script>
     <style type="text/css">@import url("css/main.css");</style>
         <!-- jquery -->
         <script type="application/x-javascript" src="js/jquery-1.7.min.js"></script>
@@ -131,6 +134,7 @@ include_once('presence_top.php');
         }
     </script>
 </head><body>
+<? print $menu ?>
 <input type="hidden" id="editmonth" value="<? print $selectedmonth; ?>"/>
 <input type="hidden" id="edityear" value="<? print $selectedyear; ?>"/>
 <input type="hidden" id="agentsids" value="<? print $agentsids; ?>"/>
@@ -147,7 +151,7 @@ Ann&eacute;e :
 <form>
 <table>
   <tbody>
-    <tr>
+    <tr style="font-weight:bold;">
       <td>Agent
       </td>
       <td>HA/HD
@@ -158,7 +162,7 @@ Ann&eacute;e :
     </tr>
     <?
     foreach ($ar_agents as &$ar_agent){
-        print "<tr>";
+        print "<tr style=\"background-color:lightgrey;\">";
         print "<td style=\"vertical-align: top;\">".$ar_agent[1]."</td>";
         print "<td style=\"vertical-align: top;\">HA</td>";
         print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear);
