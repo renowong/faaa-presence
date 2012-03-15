@@ -127,10 +127,21 @@ include_once('menu.php');
             if(minutes>=60){
                 heures = minutes/60;
                 minutes = minutes%60;
+                heures = Math.floor(heures);
+                minutes = Math.round(minutes*Math.pow(10,2))/Math.pow(10,2);
+                
             }
             if(minutes<10) minutes = "0"+minutes;
             output = heures+":"+minutes;
             $("#total_"+id).html(output);
+        }
+        
+        function extract(){
+            var month = $("#editmonth").val();
+            var year = $("#edityear").val();
+            var agents = $("#agentsids").val();
+            alert('extract.php?month='+month+'&year='+year+'&agents='+agents);
+            window.location='extract.php?month='+month+'&year='+year+'&agents='+agents;
         }
     </script>
 </head><body>
@@ -138,7 +149,7 @@ include_once('menu.php');
 <input type="hidden" id="editmonth" value="<? print $selectedmonth; ?>"/>
 <input type="hidden" id="edityear" value="<? print $selectedyear; ?>"/>
 <input type="hidden" id="agentsids" value="<? print $agentsids; ?>"/>
-<button onclick="window.location='presence.php';">Mois en cours</button>
+<button onclick="window.location='presence.php';">Mois en cours</button><button onclick="extract();">Excel</button>
 <p>Mois : <select id="slt_month">
     <? print $months ?>
 </select>
