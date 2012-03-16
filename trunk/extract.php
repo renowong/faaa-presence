@@ -1,9 +1,14 @@
 <?php
 include_once('config.php');
+include_once('extract_getdata.php');
 include_once('excel/bluebanner.php');
 include_once('excel/data.php');
 include_once('excel/days.php');
 
+$month = $_GET['month'];
+$fmonth = full_month($month);
+$year = $_GET['year'];
+$agents = $_GET['agents'];
 $file = "extract/test.xml";
 $source = "excel/head.xml";
 
@@ -19,14 +24,15 @@ fclose($fr);
 
 ///then write the blue banner
 $direction = "DIRECTION GENERALE DES SERVICES";
-$date = "FEVRIER 2012";
+$date = $fmonth." ".$year;
 fwrite($fh, blue($direction,$date));
 
 ///the write the days
 fwrite($fh, $days);
 
 ///then write data
-fwrite($fh, $data);
+//$data = getdata($year,$month,$agents);
+//fwrite($fh, $data);
 
 ///then write the rest
 $source = "excel/therest.xml";
@@ -155,6 +161,48 @@ function output_file($file, $name, $mime_type=''){
  } else die('Error - can not open file.');
  
 die();
+}
+
+
+function full_month($m){
+    switch ($m) {
+        case "01":
+            return "JANVIER";
+        break;
+        case "02":
+            return "FEVRIER";
+        break;
+        case "03":
+            return "MARS";
+        break;
+        case "04":
+            return "AVRIL";
+        break;
+        case "05":
+            return "MAI";
+        break;
+        case "06":
+            return "JUIN";
+        break;
+        case "07":
+            return "JUILLET";
+        break;
+        case "08":
+            return "AOUT";
+        break;
+        case "09":
+            return "SEPTEMBRE";
+        break;
+        case "10":
+            return "OCTOBRE";
+        break;
+        case "11":
+            return "NOVEMBRE";
+        break;
+        case "12":
+            return "DECEMBRE";
+        break;
+    }
 }
 
 ?>
