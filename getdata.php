@@ -1,6 +1,6 @@
 <?php
 include_once('config.php');
-//header('Content-Type: text/xml');
+header('Content-Type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 echo '<response>';
 echo query();
@@ -10,7 +10,7 @@ echo '</response>';
 function query() {
 	$year = $_POST['year'];
 	$month = $_POST['month'];
-	$agentid = $_POST['agentid'];;
+	$agentid = $_POST['agentid'];
 
 	$mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
 	////set the query
