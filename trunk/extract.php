@@ -31,8 +31,8 @@ fwrite($fh, blue($direction,$date));
 fwrite($fh, $days);
 
 ///then write data
-//$data = getdata($year,$month,$agents);
-//fwrite($fh, $data);
+$data = getdata($year,$month,$agents);
+fwrite($fh, $data);
 
 ///then write the rest
 $source = "excel/therest.xml";
