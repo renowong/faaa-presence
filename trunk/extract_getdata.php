@@ -1,6 +1,7 @@
 <?php
 function getdata($year,$month,$agentids) {
 	$agentid = explode("|",$agentids);
+        $maxdays = $_GET["maxdays"];
 
 	$mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
 	////set the query
@@ -39,13 +40,14 @@ function getdata($year,$month,$agentids) {
         
         foreach($agentid as &$id){
             $tt = $_GET[$id];
-            $output .= "<Row ss:AutoFitHeight=\"0\" ss:Height=\"29.988\"><Cell ss:StyleID=\"ce7\"><Data ss:Type=\"String\">CHAN</Data></Cell><Cell ss:StyleID=\"ce19\"><Data ss:Type=\"String\">HA</Data></Cell>";
-            for($i=1;$i<=31;$i++){
+            $ar_agent = getname($id);
+            $output .= "<Row ss:AutoFitHeight=\"0\" ss:Height=\"29.988\"><Cell ss:StyleID=\"ce7\"><Data ss:Type=\"String\">".$ar_agent[0]."</Data></Cell><Cell ss:StyleID=\"ce19\"><Data ss:Type=\"String\">HA</Data></Cell>";
+            for($i=1;$i<=$maxdays;$i++){
                 $output .= "<Cell ss:StyleID=\"ce28\" id=\"ha_".$id."_".$i."\"><Data ss:Type=\"String\">".$arr["ha_".$id."_".$i]."</Data></Cell>";
             }
             $output .= "<Cell ss:StyleID=\"ce51\" ss:MergeDown=\"1\"><Data ss:Type=\"String\">$tt</Data></Cell><Cell ss:StyleID=\"ce58\" ss:MergeDown=\"1\" /><Cell ss:StyleID=\"ce58\" ss:MergeDown=\"1\" /></Row>";
-            $output .= "<Row ss:AutoFitHeight=\"0\" ss:Height=\"29.988\"><Cell ss:StyleID=\"ce8\"><Data ss:Type=\"String\">Eric</Data></Cell><Cell ss:StyleID=\"ce19\"><Data ss:Type=\"String\">HD</Data></Cell>";
-            for($i=1;$i<=31;$i++){
+            $output .= "<Row ss:AutoFitHeight=\"0\" ss:Height=\"29.988\"><Cell ss:StyleID=\"ce8\"><Data ss:Type=\"String\">".$ar_agent[1]."</Data></Cell><Cell ss:StyleID=\"ce19\"><Data ss:Type=\"String\">HD</Data></Cell>";
+            for($i=1;$i<=$maxdays;$i++){
                 $output .= "<Cell ss:StyleID=\"ce28\" id=\"hd_".$id."_".$i."\"><Data ss:Type=\"String\">".$arr["hd_".$id."_".$i]."</Data></Cell>";
             }
             $output .= "</Row>";
@@ -53,6 +55,15 @@ function getdata($year,$month,$agentids) {
         }
         
         return $output;
+}
+
+function getname($id){
+    $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
+    $query = sprintf("SELECT `nom`,`prenom` FROM `agents` WHERE `agentid`='%s'",$id);
+    $result = $mysqli->query($query);
+    $row = $result->fetch_object();
+    $ar_agent = array($row->nom,$row->prenom);
+    return $ar_agent;
 }
 
 ?>

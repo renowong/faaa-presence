@@ -1,8 +1,10 @@
 <?php
 
+$maxdays = $_GET['maxdays'];
+
 $days = "<Row ss:AutoFitHeight=\"0\" ss:Height=\"16.4952\"><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce4\"><Data ss:Type=\"String\">NOM Prénom</Data></Cell><Cell ss:StyleID=\"ce16\"/>";
 
-for ($i=1;$i<=31;$i++){
+for ($i=1;$i<=$maxdays;$i++){
     $days .= "<Cell ss:StyleID=\"ce26\"><Data ss:Type=\"String\">J</Data></Cell>";
 }
 
@@ -11,12 +13,12 @@ PAIE</Data></Cell><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce64\"><Data ss:Type=\"S
 
 $days .= "<Row ss:Height=\"25\"><Cell ss:Index=\"3\" ss:StyleID=\"ce26\"><Data ss:Type=\"Number\">1</Data></Cell>";
 
-for ($i=2;$i<=31;$i++){
+for ($i=2;$i<=$maxdays;$i++){
     $days .= "<Cell ss:StyleID=\"ce26\"><Data ss:Type=\"Number\">$i</Data></Cell>";
 }
 
 $days .="</Row>";
 
-$days .="<Row ss:AutoFitHeight=\"0\" ss:Height=\"28.4904\"><Cell ss:MergeAcross=\"35\" ss:StyleID=\"ce6\"><Data ss:Type=\"String\">C E L L U L E     I N F O R M A T I Q U E</Data></Cell></Row>";
+$days .="<Row ss:AutoFitHeight=\"0\" ss:Height=\"28.4904\"><Cell ss:MergeAcross=\"".($maxdays+4)."\" ss:StyleID=\"ce6\"><Data ss:Type=\"String\">C E L L U L E     I N F O R M A T I Q U E</Data></Cell></Row>";
 
 ?>

@@ -583,7 +583,7 @@
 <Font ss:FontName="Comic Sans MS" ss:Size="10"/>
 </Style>
 </Styles>
-    <ss:Worksheet ss:Name="FEVRIER ">
+    <ss:Worksheet ss:Name="PRESENCES">
     <Table ss:StyleID="ta1">
 <Column ss:Width="60.7464"/>
 <Column ss:Width="19.5048"/>
@@ -594,9 +594,3 @@
 <Column ss:Index="17" ss:Width="32.9976"/>
 <Column ss:Span="5" ss:Width="29.2536"/>
 <Column ss:Index="24" ss:Width="30.7584"/>
-<Column ss:Span="7" ss:Width="29.2536"/>
-<Column ss:Index="33" ss:Width="32.256"/>
-<Column ss:Width="61.5096"/>
-<Column ss:Width="74.2392"/>
-<Column ss:Width="78.012"/>
-<Column ss:Span="201" ss:Width="60.012"/>
