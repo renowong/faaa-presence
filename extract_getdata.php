@@ -38,16 +38,17 @@ function getdata($year,$month,$agentids) {
         //print_r($arr);
         
         foreach($agentid as &$id){
+            $tt = $_GET[$id];
             $output .= "<Row ss:AutoFitHeight=\"0\" ss:Height=\"29.988\"><Cell ss:StyleID=\"ce7\"><Data ss:Type=\"String\">CHAN</Data></Cell><Cell ss:StyleID=\"ce19\"><Data ss:Type=\"String\">HA</Data></Cell>";
             for($i=1;$i<=31;$i++){
                 $output .= "<Cell ss:StyleID=\"ce28\" id=\"ha_".$id."_".$i."\"><Data ss:Type=\"String\">".$arr["ha_".$id."_".$i]."</Data></Cell>";
             }
-            $output .= "<Cell ss:StyleID=\"ce51\"/><Cell ss:StyleID=\"ce58\"/><Cell ss:StyleID=\"ce58\"/><Cell ss:StyleID=\"Default\"/></Row>";
+            $output .= "<Cell ss:StyleID=\"ce51\" ss:MergeDown=\"1\"><Data ss:Type=\"String\">$tt</Data></Cell><Cell ss:StyleID=\"ce58\" ss:MergeDown=\"1\" /><Cell ss:StyleID=\"ce58\" ss:MergeDown=\"1\" /></Row>";
             $output .= "<Row ss:AutoFitHeight=\"0\" ss:Height=\"29.988\"><Cell ss:StyleID=\"ce8\"><Data ss:Type=\"String\">Eric</Data></Cell><Cell ss:StyleID=\"ce19\"><Data ss:Type=\"String\">HD</Data></Cell>";
             for($i=1;$i<=31;$i++){
                 $output .= "<Cell ss:StyleID=\"ce28\" id=\"hd_".$id."_".$i."\"><Data ss:Type=\"String\">".$arr["hd_".$id."_".$i]."</Data></Cell>";
             }
-            $output .= "<Cell ss:StyleID=\"ce51\"/><Cell ss:StyleID=\"ce58\"/><Cell ss:StyleID=\"ce58\"/><Cell ss:StyleID=\"Default\"/></Row>";
+            $output .= "</Row>";
             
         }
         

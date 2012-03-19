@@ -133,15 +133,21 @@ include_once('menu.php');
             }
             if(minutes<10) minutes = "0"+minutes;
             output = heures+":"+minutes;
-            $("#total_"+id).html(output);
+            $("#span_total_"+id).html(output);
+            $("#total_"+id).val(output);
         }
         
         function extract(){
             var month = $("#editmonth").val();
             var year = $("#edityear").val();
             var agents = $("#agentsids").val();
-            alert('extract.php?month='+month+'&year='+year+'&agents='+agents);
-            window.location='extract.php?month='+month+'&year='+year+'&agents='+agents;
+            var ar_agents = agents.split("|");
+            var tt = "";
+            for(i=0;i<ar_agents.length;i++){
+                tt += "&"+ar_agents[i]+"="+$("#total_"+ar_agents[i]).val();
+            }
+            //alert('extract.php?month='+month+'&year='+year+'&agents='+agents+tt);
+            window.location='extract.php?month='+month+'&year='+year+'&agents='+agents+tt;
         }
     </script>
 </head><body>
@@ -178,7 +184,7 @@ Ann&eacute;e :
         print "<td style=\"vertical-align: top;\">HA</td>";
         print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear);
         print "<td colspan=\"1\" rowspan=\"2\" style=\"vertical-align: top;\">";
-        print "<span id=\"total_".$ar_agent[0]."\" />";
+        print "<input type=\"hidden\" id=\"total_".$ar_agent[0]."\" /><span id=\"span_total_".$ar_agent[0]."\" />";
         print "</td></tr>";
         print "<tr>";
         print "<td style=\"vertical-align: top;\">".$ar_agent[2]."</td>";
