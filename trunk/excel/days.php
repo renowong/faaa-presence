@@ -19,6 +19,6 @@ for ($i=2;$i<=$maxdays;$i++){
 
 $days .="</Row>";
 
-$days .="<Row ss:AutoFitHeight=\"0\" ss:Height=\"28.4904\"><Cell ss:MergeAcross=\"".($maxdays+4)."\" ss:StyleID=\"ce6\"><Data ss:Type=\"String\">C E L L U L E     I N F O R M A T I Q U E</Data></Cell></Row>";
+$days .="<Row ss:AutoFitHeight=\"0\" ss:Height=\"28.4904\"><Cell ss:MergeAcross=\"".($maxdays+4)."\" ss:StyleID=\"ce6\"><Data ss:Type=\"String\">".$_GET['svc']."</Data></Cell></Row>";
 
 ?>

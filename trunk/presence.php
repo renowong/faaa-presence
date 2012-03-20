@@ -142,13 +142,14 @@ include_once('menu.php');
             var year = $("#edityear").val();
             var agents = $("#agentsids").val();
             var maxdays = $("#maxdays").val();
+            var svc = $("#svc").val();
             var ar_agents = agents.split("|");
             var tt = "";
             for(i=0;i<ar_agents.length;i++){
                 tt += "&"+ar_agents[i]+"="+$("#total_"+ar_agents[i]).val();
             }
             //alert('extract.php?month='+month+'&year='+year+'&agents='+agents+tt);
-            window.location='extract.php?month='+month+'&year='+year+'&agents='+agents+'&maxdays='+maxdays+tt;
+            window.location='extract.php?month='+month+'&year='+year+'&agents='+agents+'&svc='+svc+'&maxdays='+maxdays+tt;
         }
     </script>
 </head><body>
@@ -156,6 +157,7 @@ include_once('menu.php');
 <input type="hidden" id="editmonth" value="<? print $selectedmonth; ?>"/>
 <input type="hidden" id="edityear" value="<? print $selectedyear; ?>"/>
 <input type="hidden" id="agentsids" value="<? print $agentsids; ?>"/>
+<input type="hidden" id="svc" value="<? print $service; ?>"/>
 <input type="hidden" id="maxdays" value="<? print cal_days_in_month(CAL_GREGORIAN, $selectedmonth, $selectedyear); ?>"/>
 <button onclick="window.location='presence.php';">Mois en cours</button><button onclick="extract();">Excel</button>
 <p>Mois : <select id="slt_month">
