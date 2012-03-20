@@ -1,20 +1,30 @@
 <?php
 
 $maxdays = $_GET['maxdays'];
+$ar_days = array("D","L","M","M","J","V","S");
+
+$firstday = date("w",mktime(0,0,0,$_GET['month'],1,$_GET['year']));
 
 $days = "<Row ss:AutoFitHeight=\"0\" ss:Height=\"16.4952\"><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce4\"><Data ss:Type=\"String\">NOM Prénom</Data></Cell><Cell ss:StyleID=\"ce16\"/>";
 
+$j = $firstday;
+
 for ($i=1;$i<=$maxdays;$i++){
-    $days .= "<Cell ss:StyleID=\"ce26\"><Data ss:Type=\"String\">J</Data></Cell>";
+    if($j==0||$j==6){$style="ce6";}else{$style="ce26";}
+    $days .= "<Cell ss:StyleID=\"$style\"><Data ss:Type=\"String\">".$ar_days[$j]."</Data></Cell>";
+    if($j==6){$j=0;}else{$j++;}
 }
 
 $days .="<Cell ss:MergeDown=\"1\" ss:StyleID=\"ce49\"><Data ss:Type=\"String\">TOTAL Heure de travail</Data></Cell><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce57\"><Data ss:Type=\"String\">BULLETIN
 PAIE</Data></Cell><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce64\"><Data ss:Type=\"String\">PRESENCE</Data></Cell><Cell ss:Index=\"236\" ss:StyleID=\"ce5\"/></Row>";
 
-$days .= "<Row ss:Height=\"25\"><Cell ss:Index=\"3\" ss:StyleID=\"ce26\"><Data ss:Type=\"Number\">1</Data></Cell>";
+$days .= "<Row ss:Height=\"25\"><Cell ss:Index=\"2\" ss:StyleID=\"ce26\"/>";
 
-for ($i=2;$i<=$maxdays;$i++){
-    $days .= "<Cell ss:StyleID=\"ce26\"><Data ss:Type=\"Number\">$i</Data></Cell>";
+$j = $firstday;
+for ($i=1;$i<=$maxdays;$i++){
+    if($j==0||$j==6){$style="ce6";}else{$style="ce26";}
+    $days .= "<Cell ss:StyleID=\"$style\"><Data ss:Type=\"Number\">$i</Data></Cell>";
+    if($j==6){$j=0;}else{$j++;}
 }
 
 $days .="</Row>";
