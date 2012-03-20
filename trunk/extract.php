@@ -4,6 +4,7 @@ include_once('extract_getdata.php');
 include_once('excel/bluebanner.php');
 include_once('excel/data.php');
 include_once('excel/days.php');
+include_once('excel/therest.php');
 
 $month = $_GET['month'];
 $fmonth = full_month($month);
@@ -35,13 +36,7 @@ $data = getdata($year,$month,$agents);
 fwrite($fh, $data);
 
 ///then write the rest
-$source = "excel/therest.xml";
-$fr = fopen($source, 'r') or die("can't open file".$source);
-while(!feof($fr)) {
-    $stringData = fgets($fr, 1024);
-    fwrite($fh, $stringData);
-}
-fclose($fr);
+fwrite($fh, $therest);
 
 /// finally write the end
 $source = "excel/toe.xml";
