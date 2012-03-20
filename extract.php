@@ -10,6 +10,8 @@ $month = $_GET['month'];
 $fmonth = full_month($month);
 $year = $_GET['year'];
 $agents = $_GET['agents'];
+$s = $_GET['svc'];
+$prefix = explode("/",$s);
 $file = "extract/test.xml";
 $source = "excel/head.xml";
 
@@ -24,7 +26,7 @@ while(!feof($fr)) {
 fclose($fr);
 
 ///then write the blue banner
-$direction = "DIRECTION GENERALE DES SERVICES";
+$direction = $prefix[0];
 $date = $fmonth." ".$year;
 fwrite($fh, blue($direction,$date));
 
