@@ -1,7 +1,11 @@
 <?php
-session_start();
-session_destroy();
+//session_start();
+//session_destroy();
 include_once('config.php');
+
+if($_GET['logout']==1){setcookie("user","",time()-1);}
+
+if($_COOKIE['user']>0){header("Location: presence.php");}
 
 ?>
 <html>
@@ -11,11 +15,12 @@ include_once('config.php');
 		<script type="application/x-javascript" src="js/jquery-1.7.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function () {
-			document.cookie = "user=";
-			document.cookie = "nom=";
-			document.cookie = "prenom=";
-			document.cookie = "login=";
-			document.cookie = "svc=";
+			//alert(document.cookie);
+			//document.cookie = "user=";
+			//document.cookie = "nom=";
+			//document.cookie = "prenom=";
+			//document.cookie = "login=";
+			//document.cookie = "svc=";
 		});
 		
 		function auth(){
@@ -44,7 +49,14 @@ include_once('config.php');
 			    //alert(svc);
 			    if(access=="OK"){
 				//alert("access ok");
-				document.cookie = "user="+id;
+				var today = new Date();
+				today.setTime( today.getTime() );
+				expires = 1000 * 60 * 60 * 12;
+				var expires_date = new Date( today.getTime() + (expires) );
+				
+				document.cookie = "user="+id+";expires=" + expires_date.toGMTString();
+				//alert(today.toGMTString());
+				//alert("user="+id+";expires=" + expires_date.toGMTString());
 				document.cookie = "nom="+nom;
 				document.cookie = "prenom="+prenom;
 				document.cookie = "login="+login;
