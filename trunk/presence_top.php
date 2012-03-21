@@ -63,24 +63,27 @@ function getagents($svc){
 
 function buildcol($input,$id,$month,$year){
     $max = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+    $today = date("Y-m-d");
+    //print strtotime($today)."<-//->".mktime(0, 0, 0, $month, 21, $year)."$$$";
     for ($i=1; $i<=$max; $i++)
     {
+	if(strtotime($today)==mktime(0, 0, 0, $month, $i, $year)){$red="background-color:red;";}else{$red="";}
         switch ($input){
 	    case "num":
-                print "<td style=\"text-align:center;\">$i</td>";
+                print "<td style=\"text-align:center;$red\">$i</td>";
             break;  
             case "day":
 		$ar_days = array("L","M","M","J","V","S","D");
 		$j = date("N", mktime(0, 0, 0, $month, $i, $year))-1;
-		print "<td style=\"text-align:center;\">".$ar_days[$j]."</td>";
+		print "<td style=\"text-align:center;$red\">".$ar_days[$j]."</td>";
             break;
             case "hd":
-                print "<td>";
+                print "<td style=\"text-align:center;$red\">";
                 if(!WE($i,$month,$year)) print "<input type=\"text\" size=\"2\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
                 print "</td>";
             break;
             case "ha":
-                print "<td>";
+                print "<td style=\"text-align:center;$red\">";
                 if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" size=\"2\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
                 print "</td>";
             break;
