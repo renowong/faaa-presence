@@ -66,8 +66,13 @@ function buildcol($input,$id,$month,$year){
     for ($i=1; $i<=$max; $i++)
     {
         switch ($input){
-            case "num":
-                print "<td>$i</td>";
+	    case "num":
+                print "<td style=\"text-align:center;\">$i</td>";
+            break;  
+            case "day":
+		$ar_days = array("L","M","M","J","V","S","D");
+		$j = date("N", mktime(0, 0, 0, $month, $i, $year))-1;
+		print "<td style=\"text-align:center;\">".$ar_days[$j]."</td>";
             break;
             case "hd":
                 print "<td>";
