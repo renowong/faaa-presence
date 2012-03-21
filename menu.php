@@ -1,7 +1,7 @@
 <?php
 $menu="<div class=\"horizontalcssmenu\">".
 "<ul id=\"cssmenu1\">".
-"<li style=\"border-left: 1px solid #202020;\"><a href=\"index.php\">Quitter</a></li>".
+"<li style=\"border-left: 1px solid #202020;\"><a href=\"index.php?logout=1\">Quitter</a></li>".
 "<li><a href=\"presence.php\" >Pr&eacute;sences</a></li>".
 "<li><a href=\"agents.php\" >Gestion Agents</a></li>".
 "<li><a href=\"admins.php\" >Gestion Admins</a></li>".
