@@ -173,6 +173,15 @@ Ann&eacute;e :
 <table>
   <tbody>
     <tr style="font-weight:bold;">
+      <td>
+      </td>
+      <td>
+      </td>
+        <? print buildcol("day","",$selectedmonth,$selectedyear) ?>
+      <td>Total
+      </td>
+    </tr>
+    <tr style="font-weight:bold;">
       <td>Agent
       </td>
       <td>HA/HD
