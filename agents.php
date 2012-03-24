@@ -104,7 +104,7 @@ include_once('menu.php');
                 <? print $lst_services ?>
                 </select>
                 <br/>
-                <button onclick='update_agent();'>Ajouter</button>
+                <button onclick='update_agent();'>Ajouter / Mettre &agrave; jour</button>
             </div>
         </td>
     </tr>
