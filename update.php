@@ -12,10 +12,10 @@ include_once('config.php');
     $exist = isexist_presenceid($agentid,$day,$month,$year,$type);
     if($exist>0){
         //update;
-        update($value,$exist);
+        print update($value,$exist);
     }else{
         //insert;
-        insert($agentid,$day,$month,$year,$type,$value);
+        print insert($agentid,$day,$month,$year,$type,$value);
     }
     
 function update($value,$presenceid){
@@ -52,5 +52,6 @@ function insert($agentid,$day,$month,$year,$type,$value){
                      ,$agentid,$day,$month,$year,$type,$value);
     $mysqli->query($query);
     $mysqli->close();
+    return $query;
 }
 ?>
