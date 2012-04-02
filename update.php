@@ -6,7 +6,7 @@ include_once('config.php');
     $month = $_POST['month'];
     $day = $_POST['day'];
     $type = $_POST['type'];
-    $value = $_POST['value'];
+    $value = strtoupper($_POST['value']);
     $agentid = $_POST['agentid'];
     
     $exist = isexist_presenceid($agentid,$day,$month,$year,$type);

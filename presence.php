@@ -78,12 +78,13 @@ include_once('menu.php');
         
         function checkvalid(input){
             var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            var pattern2 = /^(CP|AB|AM|CM|AT|CF|F|)$/;
+            var pattern2 = /^(CP|AB|AM|CM|AT|CF|F)$/i;
             if(pattern.test(input) || pattern2.test(input)){
                 return true;}else{return false;}
         }
         
         function calc(field){
+            var pattern = /^(CP|AB|AM|CM|AT|CF|F)$/i;
             var suffix = field.substring(2);
             var ha = $("#ha"+suffix).val();
             var hd = $("#hd"+suffix).val();
@@ -93,8 +94,8 @@ include_once('menu.php');
             day = day.split("_");
             var d = new Date(year, month, day[1]);
 
-            if(ha=="CP" || ha=="AM" || ha=="CM" || ha=="AT" || ha=="CF" || ha=="F") {ha="7:30";}
-            if(hd=="CP" || hd=="AM" || hd=="CM" || hd=="AT" || hd=="CF" || hd=="F") {
+            if(pattern.test(ha)) {ha="7:30";}
+            if(pattern.test(hd)) {
                 if(d.getDay()=="1"){
                     hd="14:30";
                 }else{
