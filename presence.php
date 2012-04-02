@@ -78,13 +78,14 @@ include_once('menu.php');
         
         function checkvalid(input){
             var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            var pattern2 = /^(CP|AB|AM|CM|AT|CF|F)$/i;
+            var pattern2 = /^(CP|AB|AM|CM|AT|CF|F)?$/i;
             if(pattern.test(input) || pattern2.test(input)){
                 return true;}else{return false;}
         }
         
         function calc(field){
-            var pattern = /^(CP|AB|AM|CM|AT|CF|F)$/i;
+            var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+            var pattern2 = /^(CP|AM|CM|AT|CF|F)$/i;
             var suffix = field.substring(2);
             var ha = $("#ha"+suffix).val();
             var hd = $("#hd"+suffix).val();
@@ -92,15 +93,18 @@ include_once('menu.php');
             var year = $("#slt_annee").val();
             var day = suffix.substring(1);
             day = day.split("_");
-            var d = new Date(year, month, day[1]);
+            var d = new Date(year, month-1, day[1]);
 
-            if(pattern.test(ha)) {ha="7:30";}
-            if(pattern.test(hd)) {
-                if(d.getDay()=="1"){
+            if(pattern2.test(ha)) {ha="7:30";} else {if(!pattern.test(ha)){ha="0:00";}}
+            if(pattern2.test(hd)) {
+                //alert(d.getDay());
+                if(d.getDay()=="5"){
                     hd="14:30";
                 }else{
                     hd="15:30";
                 }
+            }else{
+                if(!pattern.test(ha)){hd="0:00";} 
             }
             var tt = new Date('01/01/2009 ' + hd)-new Date('01/01/2009 ' + ha);
             tt = tt/1000; //convert to seconds
