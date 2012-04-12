@@ -40,12 +40,13 @@ include_once('menu.php');
             var login = $("#txt_login").val();
             var nom = $("#txt_nom").val();
             var prenom = $("#txt_prenom").val();
+            var password = $("#txt_password").val();
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
             var actif;
             if($("#chk_actif").attr("checked")=="checked"){actif=1;}else{actif=0;};
             
-            $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,svc:svc,actif:actif},
+            $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,password:password,svc:svc,actif:actif},
                 function(response) {
                 //readresponse(response);
                 alert(response);
@@ -96,7 +97,8 @@ include_once('menu.php');
                 Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/>
                 Login : <input type='text' id='txt_login' name='txt_login' style='text-transform:lowercase;' /><br/>
                 Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;' /><br/>
-                Prenom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /><br/>
+                Pr&eacute;nom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /><br/>
+                Mot de passe : <input type='text' id='txt_password' name='txt_password' /> <i>Laisser vide pour garder l'ancien mot de passe</i><br/>
                 Service : <select id='slt_services' name='slt_services'>
                 <? print $lst_services ?>
                 </select>

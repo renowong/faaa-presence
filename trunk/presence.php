@@ -175,7 +175,7 @@ Ann&eacute;e :
 <button onclick="loaddate();">Charger</button>
 </p>
 <form>
-<table>
+<table width='100%'>
   <tbody>
     <tr style="font-weight:bold;">
       <td>
