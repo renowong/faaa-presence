@@ -215,5 +215,17 @@ Ann&eacute;e :
   </tbody>
 </table>
 </form>
+<div id="agents_names">
+    <table>
+        <tbody>
+            <?
+            foreach ($ar_agents as &$ar_agent){
+                print "<tr style=\"background-color:lightgrey;height:23px;\"><td style=\"vertical-align: top;\">".$ar_agent[1]."</td></tr>";
+                print "<tr style=\"height:23px;\"><td style=\"vertical-align: top;\">".$ar_agent[2]."</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 <br>
 </body></html>
