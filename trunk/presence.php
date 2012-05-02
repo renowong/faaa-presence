@@ -10,6 +10,7 @@ include_once('menu.php');
     <link rel="stylesheet" type="text/css" href="css/csshorizontalmenu.css" />
     <script type="text/javascript" src="js/csshorizontalmenu.js"></script>
     <style type="text/css">@import url("css/main.css");</style>
+    <style type="text/css"><? echo getBrowserCss(); ?></style>
         <!-- jquery -->
         <script type="application/x-javascript" src="js/jquery-1.7.min.js"></script>
         <script type="text/javascript">
@@ -220,8 +221,8 @@ Ann&eacute;e :
         <tbody>
             <?
             foreach ($ar_agents as &$ar_agent){
-                print "<tr style=\"background-color:lightgrey;height:23px;\"><td style=\"vertical-align: top;\">".$ar_agent[1]."</td></tr>";
-                print "<tr style=\"height:23px;\"><td style=\"vertical-align: top;\">".$ar_agent[2]."</td></tr>";
+                print "<tr class=\"tr_agents_names\" style=\"background-color:lightgrey;\"><td style=\"vertical-align: top;\">".$ar_agent[1]."</td></tr>";
+                print "<tr class=\"tr_agents_names\"><td style=\"vertical-align: top;\">".$ar_agent[2]."</td></tr>";
             }
             ?>
         </tbody>
