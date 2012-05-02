@@ -157,6 +157,14 @@ include_once('menu.php');
             //alert('extract.php?month='+month+'&year='+year+'&agents='+agents+tt);
             window.location='extract.php?month='+month+'&year='+year+'&agents='+agents+'&svc='+svc+'&maxdays='+maxdays+tt;
         }
+        
+        function showall(val){
+            if(val) {
+                window.location='presence.php?showall=1';
+            }else{
+                window.location='presence.php';
+            }
+        }
     </script>
 </head><body>
 <? print $menu ?>
@@ -166,6 +174,7 @@ include_once('menu.php');
 <input type="hidden" id="svc" value="<? print $service; ?>"/>
 <input type="hidden" id="maxdays" value="<? print cal_days_in_month(CAL_GREGORIAN, $selectedmonth, $selectedyear); ?>"/>
 <button onclick="window.location='presence.php';">Mois en cours</button><button onclick="extract();">Excel</button>
+| <input type="checkbox" id="showall" name="showall" onchange="showall(this.checked);"<? echo $showall; ?> /> Afficher les services
 <p>Mois : <select id="slt_month">
     <? print $months ?>
 </select>

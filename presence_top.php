@@ -14,6 +14,7 @@ $ar_agents = getagents($service);
 $months = buildmonths($selectedmonth);
 $years = buildyears($selectedyear);
 $agentsids = buildagentsids($ar_agents);
+if($_GET['showall']==1) $showall = " checked";
 
 
 ///////////////functions*//////////////////////
@@ -51,7 +52,12 @@ function getagents($svc){
         $ar_agent = array();
     	$mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
 	////set the query
-	$query = sprintf("SELECT * FROM `agents` WHERE `service`='%s' AND `active`='1'",$svc);
+	if($_GET['showall']==1){
+	    $query = sprintf("SELECT * FROM `agents` WHERE `service` LIKE '%s%%' AND `active`='1' ORDER BY service,nom",$svc);
+	}else{
+	    $query = sprintf("SELECT * FROM `agents` WHERE `service` LIKE '%s' AND `active`='1' ORDER BY service,nom",$svc);
+	}
+	
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
         array_push($ar_agent,array($row->agentid,$row->nom,$row->prenom));            
