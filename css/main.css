@@ -128,13 +128,6 @@ input, select {
 	visibility:hidden;
 }
 
-#agents_names {
-	position:fixed;
-	top:149px;
-	left:0px;
-	z-index:2;
-}
-
 /*////////CLASSES/////////////////////////*/
 .close {
 	display:inline;
