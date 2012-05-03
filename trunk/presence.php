@@ -174,7 +174,11 @@ include_once('menu.php');
 <input type="hidden" id="svc" value="<? print $service; ?>"/>
 <input type="hidden" id="maxdays" value="<? print cal_days_in_month(CAL_GREGORIAN, $selectedmonth, $selectedyear); ?>"/>
 <button onclick="window.location='presence.php';">Mois en cours</button><button onclick="extract();">Excel</button>
-| <input type="checkbox" id="showall" name="showall" onchange="showall(this.checked);"<? echo $showall; ?> /> Afficher les services
+<?
+if($isdir=="true"){
+    print "| <input type=\"checkbox\" id=\"showall\" name=\"showall\" onchange=\"showall(this.checked);\"$showall /> Afficher les services";
+}
+?>
 <p>Mois : <select id="slt_month">
     <? print $months ?>
 </select>

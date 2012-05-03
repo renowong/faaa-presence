@@ -15,6 +15,7 @@ $months = buildmonths($selectedmonth);
 $years = buildyears($selectedyear);
 $agentsids = buildagentsids($ar_agents);
 if($_GET['showall']==1) $showall = " checked";
+if(strpos($service,"/")=="") {$isdir="true";}else{$isdir="false";};
 
 
 ///////////////functions*//////////////////////
