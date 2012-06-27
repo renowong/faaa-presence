@@ -31,7 +31,7 @@ function update($value,$presenceid){
 function isexist_presenceid($agentid,$day,$month,$year,$type){
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
     ////set the query
-    $query = sprintf("SELECT `presenceid` FROM `presence` WHERE `agentid`='%s' AND `day`='%s' AND `month`='%s' AND `year`='%s' AND `type`='%s' LIMIT 1"
+    $query = sprintf("SELECT `presenceid` FROM `presence` WHERE `agentid`='%s' AND `day`='%s' AND `month`='%s' AND `year`='%s' AND `type`='%s'"
                      ,$agentid,$day,$month,$year,$type);
     $result = $mysqli->query($query);
     $row_cnt = $result->num_rows;
