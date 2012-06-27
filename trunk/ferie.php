@@ -22,13 +22,6 @@ include_once('menu.php');
 <? print $menu ?>
 <table width='100%'>
     <tr>
-        <td width='20%'>
-            <h1>Services</h1>
-            <div id="list_services">
-            <? print $services ?>
-            </div>
-            <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service'/><button onclick='addsvc();'>Ajouter Service</button>
-        </td>
         <td>
             <h1>Gestion des F&eacute;ri&eacute;s</h1>
 
