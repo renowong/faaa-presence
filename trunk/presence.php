@@ -63,12 +63,15 @@ include_once('menu.php');
             var type = arr[0];
             var agentid = arr[1];
             var editday = arr[2];
+            
             //if(fvalue!=""){
                 if(checkvalid(fvalue)){
+                    $("#"+fname).prop("readonly","readonly");
                     $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
                             function(response) {
-                            //readresponse(response);
-                            //alert(response);
+                                //readresponse(response);
+-                               //alert(response);
+                                $("#"+fname).prop("readonly","");
                             });
                 }else{
                     alert("Entr\351e invalide!");
@@ -166,7 +169,8 @@ include_once('menu.php');
             }
         }
     </script>
-</head><body>
+</head>
+<body>
 <? print $menu ?>
 <input type="hidden" id="editmonth" value="<? print $selectedmonth; ?>"/>
 <input type="hidden" id="edityear" value="<? print $selectedyear; ?>"/>
