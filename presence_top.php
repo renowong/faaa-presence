@@ -75,22 +75,24 @@ function buildcol($input,$id,$month,$year){
     for ($i=1; $i<=$max; $i++)
     {
 	if(strtotime($today)==mktime(0, 0, 0, $month, $i, $year)){$green="background-color:green;";}else{$green="";}
+	$we = date("N",mktime(0, 0, 0, $month, $i, $year));
+	if($we==6||$we==7){$grey="background-color:grey;";}else{$grey="";}
         switch ($input){
 	    case "num":
-                print "<td style=\"text-align:center;$green\">$i</td>";
+                print "<td style=\"text-align:center;$green$grey\">$i</td>";
             break;  
             case "day":
 		$ar_days = array("L","M","M","J","V","S","D");
 		$j = date("N", mktime(0, 0, 0, $month, $i, $year))-1;
-		print "<td style=\"text-align:center;$green\">".$ar_days[$j]."</td>";
+		print "<td style=\"text-align:center;$green$grey\">".$ar_days[$j]."</td>";
             break;
             case "hd":
-                print "<td style=\"text-align:center;$green\">";
+                print "<td style=\"text-align:center;$green$grey\">";
                 if(!WE($i,$month,$year)) print "<input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
                 print "</td>";
             break;
             case "ha":
-                print "<td style=\"text-align:center;$green\">";
+                print "<td style=\"text-align:center;$green$grey\">";
                 if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
                 print "</td>";
             break;
