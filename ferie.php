@@ -10,7 +10,7 @@ include_once('menu.php');
     <script type="text/javascript" src="js/csshorizontalmenu.js"></script>
     <style type="text/css">@import url("css/main.css");</style>
         <!-- jquery -->
-        <script type="application/x-javascript" src="js/jquery-1.7.min.js"></script>
+        <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function () {
         
@@ -24,7 +24,7 @@ include_once('menu.php');
     <tr>
         <td>
             <h1>Gestion des F&eacute;ri&eacute;s</h1>
-
+            <input type="text" name="fdate" id="fdate"/> <button>Ajouter</button>
         </td>
     </tr>
 </table>
