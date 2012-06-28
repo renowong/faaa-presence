@@ -12,7 +12,7 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 	<head>
 		<style type="text/css">@import url("css/main.css");</style>
 		<!-- jquery -->
-		<script type="application/x-javascript" src="js/jquery-1.7.min.js"></script>
+		<script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function () {
 			//alert(document.cookie);
