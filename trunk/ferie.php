@@ -11,10 +11,20 @@ include_once('menu.php');
     <style type="text/css">@import url("css/main.css");</style>
         <!-- jquery -->
         <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
+        <link type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ui.datepicker-fr.js"></script>
         <script type="text/javascript">
         $(document).ready(function () {
+            
+
+	//$.datepicker.setDefaults($.datepicker.regional['fr']);
         
-       
+        
+        $('#datepicker').datepicker({
+                inline: true
+        });
+
         });
         
     </script>
@@ -24,7 +34,7 @@ include_once('menu.php');
     <tr>
         <td>
             <h1>Gestion des F&eacute;ri&eacute;s</h1>
-            <input type="text" name="fdate" id="fdate"/> <button>Ajouter</button>
+            <p>Date: <input type="text" id="datepicker"> <button>Ajouter</button></p>
         </td>
     </tr>
 </table>
