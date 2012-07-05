@@ -72,7 +72,7 @@ input, select {
 	top:0px;
 	width:auto;
 	z-index:2;
-	visibility:hidden;
+	visibility:visible;
 }
 
 #message {
@@ -85,7 +85,7 @@ input, select {
 	background-color:yellow;
 	width:100%;
 	z-index:1;
-	visibility:visible;
+	display:none;
 	}
 
 #invalidation {
