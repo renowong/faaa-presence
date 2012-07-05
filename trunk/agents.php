@@ -1,17 +1,15 @@
 <?php
 include_once('config.php');
+include_once('headers.php');
 include_once('agents_top.php');
 include_once('menu.php');
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
-<title></title>
-    <link rel="stylesheet" type="text/css" href="css/csshorizontalmenu.css" />
-    <script type="text/javascript" src="js/csshorizontalmenu.js"></script>
-    <style type="text/css">@import url("css/main.css");</style>
+    <?php echo $title.$icon.$charset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
+
         <!-- jquery -->
-        <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function () {
         
@@ -74,6 +72,7 @@ include_once('menu.php');
         }
     </script>
 </head><body>
+<div name="message" id="message" ></div>
 <? print $menu ?>
 <table width='100%'>
     <tr>
