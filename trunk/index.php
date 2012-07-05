@@ -103,8 +103,8 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 		<div name="message" id="message" ></div>
 		<div id="dialog-form" title="Pr&eacute;sence">
 			<form style="text-align:right;">
-				Utilisateur : <input type="text" name="login" id="login" value="" maxlength="10" size="20" /><br/>
-				Mot de passe : <input type="password" name="password" id="password"value="" maxlength="10" size="20" />
+				Utilisateur : <input type="text" name="login" id="login" value="" maxlength="10" size="20" autocomplete="off" /><br/>
+				Mot de passe : <input type="password" name="password" id="password"value="" maxlength="10" size="20" autocomplete="off" />
 			</form>
 		</div>
 	</body>
