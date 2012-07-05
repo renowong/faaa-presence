@@ -1,7 +1,6 @@
 <?php
-//session_start();
-//session_destroy();
 include_once('config.php');
+include_once('headers.php');
 
 if($_GET['logout']==1){setcookie("user","",time()-1);}
 
@@ -10,20 +9,42 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 ?>
 <html>
 	<head>
-		<style type="text/css">@import url("css/main.css");</style>
-		<!-- jquery -->
-		<script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
+		<?php echo $title.$icon.$charset.$nocache.$defaultcss.$jquery.$jqueryui.$message_div ?>
+
 		<script type="text/javascript">
 		$(document).ready(function () {
-			//alert(document.cookie);
-			//document.cookie = "user=";
-			//document.cookie = "nom=";
-			//document.cookie = "prenom=";
-			//document.cookie = "login=";
-			//document.cookie = "svc=";
+			
+			$("#login").keydown(function (e){
+				if(e.keyCode == 13){
+				    login();
+				}
+			})
+			
+			$("#password").keydown(function (e){
+				if(e.keyCode == 13){
+				    login();
+				}
+			})
+			
+			$( "#dialog-form" ).dialog({
+				height: 160,
+				width: 300,
+				modal: false,
+				resizable: false,
+				buttons: {
+					"Se connecter": function() {
+						login();
+					},
+					RAZ: function() {
+						reset();
+					}
+				},
+				beforeclose : function() { return false; }
+			});
+			$('#login').focus();
 		});
 		
-		function auth(){
+		function login(){
 			var login = $("#login").val();
 			var password = $("#password").val();
 			$.post("auth.php", {login:login,password:password},
@@ -35,7 +56,8 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 		
 		function reset() {
 			$("#login").val("");
-			$("#password").val("");	
+			$("#password").val("");
+			$('#login').focus();
 		}
 		
 		function readresponse(xml){
@@ -63,7 +85,8 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 				document.cookie = "svc="+svc;
 				window.location = "presence.php";
 			    }else{
-				alert(access);
+				message(access);
+				reset();
 			    }
 			});
 		}
@@ -76,28 +99,13 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 		}
 		</script>
 	</head>
-	<body onload="document.getElementById('login').focus();">
+	<body>
 		<div name="message" id="message" ></div>
-		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		<div name="divlogin" id="divlogin">
-			<table name="tbllogin" id="tbllogin" class="tblform">
-				<thead>
-					<tr>
-						<th colspan="2">Pr&eacute;sence</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Utilisateur</td><td class="inputbox"><input type="text" name="login" id="login" value="" maxlength="10" size="20" onkeydown="checkenter(event);"/></td>
-					</tr>
-					<tr>
-						<td>Mot de passe</td><td class="inputbox" ><input type="password" name="password" id="password"value="" maxlength="10" size="20" onkeydown="checkenter(event);"/></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="inputbox"><input type="button" name="reset" id="reset" value="Annuler" onclick="reset()" /><input type="button" name="submit" id="submit" value="Entrer" onclick="auth()" /></td>
-					</tr>
-				</tbody>
-			</table>
+		<div id="dialog-form" title="Pr&eacute;sence">
+			<form style="text-align:right;">
+				Utilisateur : <input type="text" name="login" id="login" value="" maxlength="10" size="20" /><br/>
+				Mot de passe : <input type="password" name="password" id="password"value="" maxlength="10" size="20" />
+			</form>
 		</div>
 	</body>
 <html>
