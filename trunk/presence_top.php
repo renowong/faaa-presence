@@ -68,7 +68,7 @@ function getagents($svc){
         return $ar_agent;
 }
 
-function buildcol($input,$id,$month,$year){
+function buildcol($input,$id,$month,$year,$prenom,$nom){
     $max = cal_days_in_month(CAL_GREGORIAN, $month, $year);
     $today = date("Y-m-d");
     //print strtotime($today)."<-//->".mktime(0, 0, 0, $month, 21, $year)."$$$";
@@ -88,12 +88,12 @@ function buildcol($input,$id,$month,$year){
             break;
             case "hd":
                 print "<td style=\"text-align:center;$green$grey\">";
-                if(!WE($i,$month,$year)) print "<input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" title=\"".$prenom." ".$nom." HD\" />";
                 print "</td>";
             break;
             case "ha":
                 print "<td style=\"text-align:center;$green$grey\">";
-                if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" title=\"".$prenom." ".$nom." HA\" />";
                 print "</td>";
             break;
         }

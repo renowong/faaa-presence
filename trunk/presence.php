@@ -7,8 +7,8 @@ include_once('menu.php');
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
+<link rel='stylesheet' type='text/css' href='css/cssreset.css' />
     <?php echo $title.$icon.$charset.$nocache.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
-    <style type="text/css"><? echo getBrowserCss(); ?></style>
         <!-- jquery -->
         <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
@@ -214,35 +214,23 @@ Ann&eacute;e :
     </tr>
     <?
     foreach ($ar_agents as &$ar_agent){
-        print "<tr style=\"background-color:lightgrey;\">";
+        print "<tr style=\"background-color:lightgrey;\" title=\"".$ar_agent[1]." ".$ar_agent[2]." HA\">";
         print "<td style=\"vertical-align: top;\">".$ar_agent[1]."</td>";
         print "<td style=\"vertical-align: top;\">HA</td>";
-        print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear);
+        print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
         print "<td colspan=\"1\" rowspan=\"2\" style=\"vertical-align: top;\">";
         print "<input type=\"hidden\" id=\"total_".$ar_agent[0]."\" /><span id=\"span_total_".$ar_agent[0]."\" />";
         print "</td></tr>";
-        print "<tr>";
+        print "<tr title=\"".$ar_agent[1]." ".$ar_agent[2]." HD\">";
         print "<td style=\"vertical-align: top;\">".$ar_agent[2]."</td>";
         print "<td style=\"vertical-align: top;\">HD</td>";
         print "</td>";
-        print buildcol("hd",$ar_agent[0],$selectedmonth,$selectedyear);
+        print buildcol("hd",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
         print "</tr>";
     }
     ?>
   </tbody>
 </table>
 </form>
-<div id="agents_names">
-    <table>
-        <tbody>
-            <?
-            foreach ($ar_agents as &$ar_agent){
-                print "<tr class=\"tr_agents_names\" style=\"background-color:lightgrey;\"><td style=\"vertical-align: top;\">".$ar_agent[1]."</td></tr>";
-                print "<tr class=\"tr_agents_names\"><td style=\"vertical-align: top;\">".$ar_agent[2]."</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-</div>
 <br>
 </body></html>
