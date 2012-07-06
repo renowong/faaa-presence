@@ -40,10 +40,12 @@ include_once('menu.php');
                 var feries = $.parseJSON(response);
                 $.each(feries,function(i,elem){
                     elem = elem.replace("0","");
-                   $('input[id^=ha_][id$=_'+elem+']').val('F');
-                   $('input[id^=ha_][id$=_'+elem+']').prop('disabled','disabled');
-                   $('input[id^=hd_][id$=_'+elem+']').val('F');
-                   $('input[id^=hd_][id$=_'+elem+']').prop('disabled','disabled');
+                   $('input[id^=ha_][id$=_'+elem+']').val('F').blur();
+                   $('input[id^=ha_][id$=_'+elem+']').prop('readonly','readonly');
+                   $('input[id^=ha_][id$=_'+elem+']').addClass('grey');
+                   $('input[id^=hd_][id$=_'+elem+']').val('F').blur();
+                   $('input[id^=hd_][id$=_'+elem+']').prop('readonly','readonly');
+                   $('input[id^=hd_][id$=_'+elem+']').addClass('grey');
                 });
                 });
         }
