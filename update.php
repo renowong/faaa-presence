@@ -12,12 +12,25 @@ include_once('config.php');
     $exist = isexist_presenceid($agentid,$day,$month,$year,$type);
     if($exist>0){
         //update;
-        print update($value,$exist);
+        if($value==""){
+            print delete($exist);
+        }else{
+            print update($value,$exist);
+        }
     }else{
         //insert;
-        print insert($agentid,$day,$month,$year,$type,$value);
+        if($value!=""){print insert($agentid,$day,$month,$year,$type,$value);}
     }
-    
+function delete($presenceid){
+    $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
+    ////set the query
+    $query = sprintf("DELETE FROM `presence` WHERE `presenceid`='%s'"
+                     ,$presenceid);
+    $mysqli->query($query);
+    $mysqli->close();
+    return $query;
+}
+
 function update($value,$presenceid){
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
     ////set the query
