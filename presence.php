@@ -84,7 +84,7 @@ include_once('menu.php');
                     $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
                             function(response) {
                                 //readresponse(response);
--                               //alert(response);
+                               //alert(response);
                                 //$("#"+fname).prop("readonly","");
                             });
                 }else{
