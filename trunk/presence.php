@@ -250,4 +250,25 @@ Ann&eacute;e :
 </table>
 </form>
 <br>
+    <table>
+        <tr>
+            <th colspan="2">
+                Valeurs autoris&eacute;es
+            </th>
+        </tr>
+        <tr>
+            <td style="padding:10px;">
+                HA : Heure arriv&eacute;e<br/>
+                HD : Heure d&eacute;part<br/>
+                AB : Absence<br/>
+                CP : Cong&eacute;s pay&eacute;s
+            </td>
+            <td style="padding:10px;">
+                AM : Arr&ecirc;t maladie<br/>
+                CM : Cong&eacute;s maternit&eacute;<br/>
+                AT : Accident de travail<br/>
+                CF : Cong&eacute;s pour &eacute;v&eacute;nements familiaux
+            </td>
+        </tr>
+    </table>
 </body></html>
