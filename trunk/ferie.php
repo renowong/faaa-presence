@@ -13,6 +13,7 @@ include_once('menu.php');
         $(document).ready(function () {
             $('#datepicker').datepicker({
                     beforeShowDay: $.datepicker.noWeekends,
+                    minDate: 0,
                     inline: true
             });
             
