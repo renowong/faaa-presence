@@ -10,19 +10,26 @@ switch($f){
         insert($_POST['day'],$_POST['month'],$_POST['year']); 
     break;
     case 'list':
-        list(); 
+        loadlist($_POST['year']); 
     break;
 }
 
 
 ////////////////functions///////////////////////////
 
-function list(){
+function loadlist($year){
+    $thismonth = date("m");
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
-    $query = sprintf("SELECT * FROM `feries` ORDER BY `year`,`month`,`day` DESC");
-    $mysqli->query($query);
+    $query = sprintf("SELECT * FROM `feries` WHERE `year`='$year' ORDER BY `year`,`month`,`day` ASC");
+    $result = $mysqli->query($query);
+
+    while($row = $result->fetch_object()){
+        if($row->month>=$thismonth){$trash="<a href='javascript:deleteferie(".$row->ferieid.");'><img src='img/trash.png'/></a>";}else{$trash="";}
+        $output .= $row->day."/".$row->month."/".$row->year." $trash<br/><br/>";
+    }
+
     $mysqli->close();
-    print $query;
+    print $output;
 }
 
 function insert($day,$month,$year){
