@@ -39,7 +39,7 @@ include_once('menu.php');
                 function(response) {
                 var feries = $.parseJSON(response);
                 $.each(feries,function(i,elem){
-                    elem = elem.replace("0","");
+                    if(elem.substring(0,1)=="0") {elem = elem.replace("0","");}
                    $('input[id^=ha_][id$=_'+elem+']').val('F').blur();
                    $('input[id^=ha_][id$=_'+elem+']').prop('readonly','readonly');
                    $('input[id^=ha_][id$=_'+elem+']').addClass('grey');

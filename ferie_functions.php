@@ -23,7 +23,7 @@ switch($f){
 function loadlist($year){
     $thismonth = date("m");
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
-    $query = sprintf("SELECT * FROM `feries` WHERE `year`='$year' ORDER BY `year`,`month`,`day` ASC");
+    $query = sprintf("SELECT * FROM `feries` WHERE `year`='%s' ORDER BY `year`,`month`,`day` ASC",$year);
     $result = $mysqli->query($query);
 
     while($row = $result->fetch_object()){
@@ -47,12 +47,29 @@ function insert($day,$month,$year){
 
 function delete($id){
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
-    ////set the query
+    $feriedata = getdataferie($id);
+    $ar_feriedata = explode("-",$feriedata);
     $query = sprintf("DELETE FROM `feries` WHERE `ferieid`='%s'"
                      ,$id);
     $mysqli->query($query);
+    $query = sprintf("DELETE FROM `presence` WHERE `day`='%s' AND `month`='%s' AND `year`='%s'"
+                     ,$ar_feriedata[2],$ar_feriedata[1],$ar_feriedata[0]);
+    $mysqli->query($query);
     $mysqli->close();
     print $query;
+}
+
+function getdataferie($id){
+    $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
+    $query = sprintf("SELECT `day`,`month`,`year` FROM `feries` WHERE `ferieid`='%s'",$id);
+    $result = $mysqli->query($query);
+
+    $row = $result->fetch_row();
+    if(substr($row[0],0,1)=="0") {$row[0] = substr($row[0],1);}
+    $feriesdata=$row[2]."-".$row[1]."-".$row[0];
+
+    $mysqli->close();
+    return $feriesdata;
 }
     
 ?>
