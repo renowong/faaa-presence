@@ -206,8 +206,12 @@ img {
 	color: blue;
 }
 
-.gree {
+.green {
 	color: green;
+}
+
+.grey {
+	background-color: grey;
 }
 
 .right{
