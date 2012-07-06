@@ -25,10 +25,24 @@ include_once('menu.php');
                 $.post("ferie_functions.php",{f:"insert",year:year,month:month,day:day},
                     function(response) {
                         //readresponse(response);
-                        alert(response);
+                        //alert(response);
+                        loadlist();
                 });
             });
+
+            loadlist();
         });
+        
+        function loadlist(){
+            var d = new Date();
+            var year = d.getFullYear();
+
+            $.post("ferie_functions.php",{f:"list",year:year},
+                    function(response) {
+                        $("#ferielist").empty();
+                        $("#ferielist").html(response);
+                });
+        }
         
     </script>
 </head><body>
@@ -42,5 +56,12 @@ include_once('menu.php');
         </td>
     </tr>
 </table>
-    
+<table width='100%'>
+    <tr>
+        <td>
+            <h1>F&eacute;ri&eacute;s de cette ann&eacute;e</h1>
+            <div id="ferielist" />
+        </td>
+    </tr>
+</table>
 </body></html>

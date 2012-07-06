@@ -61,6 +61,10 @@ input, select {
 	font-size: 12px
 }
 
+img {
+	vertical-align: middle;
+}
+
 /*////////ID TAGS/////////////////////////*/
 #compte_div {
 	position:absolute;
