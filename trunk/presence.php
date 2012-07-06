@@ -20,7 +20,8 @@ include_once('menu.php');
         for(i=0;i<ar_ids.length;i++){
             getdata($("#editmonth").val(),$("#edityear").val(),ar_ids[i]);
         }
-       
+        
+        loadferies($("#editmonth").val(),$("#edityear").val());
         });
         
         
@@ -29,9 +30,22 @@ include_once('menu.php');
             $.post("getdata.php", {month:month,year:year,agentid:agentid},
                 function(response) {
                 loaddata(response);
-                //alert(response);
                 });
             
+        }
+        
+        function loadferies(month,year){
+            $.post("getferies.php", {month:month,year:year},
+                function(response) {
+                var feries = $.parseJSON(response);
+                $.each(feries,function(i,elem){
+                    elem = elem.replace("0","");
+                   $('input[id^=ha_][id$=_'+elem+']').val('F');
+                   $('input[id^=ha_][id$=_'+elem+']').prop('disabled','disabled');
+                   $('input[id^=hd_][id$=_'+elem+']').val('F');
+                   $('input[id^=hd_][id$=_'+elem+']').prop('disabled','disabled');
+                });
+                });
         }
         
         function loaddata(xml){
@@ -87,7 +101,7 @@ include_once('menu.php');
         
         function calc(field){
             var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            var pattern2 = /^(CP|AM|CM|AT|CF|F)$/i;
+            var pattern2 = /^(CP|AM|CM|AT|CF)$/i;
             var suffix = field.substring(2);
             var ha = $("#ha"+suffix).val();
             var hd = $("#hd"+suffix).val();
@@ -106,8 +120,9 @@ include_once('menu.php');
                     hd="15:30";
                 }
             }else{
-                if(!pattern.test(ha)){hd="0:00";} 
+                if(!pattern.test(ha)||!pattern.test(hd)){ha="";hd="";}
             }
+            
             var tt = new Date('01/01/2009 ' + hd)-new Date('01/01/2009 ' + ha);
             tt = tt/1000; //convert to seconds
             $("#tt"+suffix).val(tt);
