@@ -44,6 +44,14 @@ include_once('menu.php');
                 });
         }
         
+        function deleteferie(id){
+            $.post("ferie_functions.php",{f:"delete",ferieid:id},
+                function(response) {
+                    //alert(response);
+                    loadlist();
+            });
+        }
+        
     </script>
 </head><body>
 <div name="message" id="message" ></div>
