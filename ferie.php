@@ -11,15 +11,23 @@ include_once('menu.php');
         
         <script type="text/javascript">
         $(document).ready(function () {
+            $('#datepicker').datepicker({
+                    inline: true
+            });
             
-
-	//$.datepicker.setDefaults($.datepicker.regional['fr']);
-        
-        
-        $('#datepicker').datepicker({
-                inline: true
-        });
-
+            $('#btn_ajouter').click(function(){
+                var date = $("#datepicker").val();
+                var ar_date = date.split("/");
+                var day = ar_date[0];
+                var month = ar_date[1];
+                var year = ar_date[2];
+                
+                $.post("ferie_functions.php",{f:"insert",year:year,month:month,day:day},
+                    function(response) {
+                        //readresponse(response);
+                        alert(response);
+                });
+            });
         });
         
     </script>
@@ -30,7 +38,7 @@ include_once('menu.php');
     <tr>
         <td>
             <h1>Gestion des F&eacute;ri&eacute;s</h1>
-            <p>Date: <input type="text" id="datepicker"> <button>Ajouter</button></p>
+            <p>Date: <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
         </td>
     </tr>
 </table>
