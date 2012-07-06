@@ -80,12 +80,12 @@ include_once('menu.php');
             
             //if(fvalue!=""){
                 if(checkvalid(fvalue)){
-                    $("#"+fname).prop("readonly","readonly");
+                    //$("#"+fname).prop("readonly","readonly");
                     $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
                             function(response) {
                                 //readresponse(response);
 -                               //alert(response);
-                                $("#"+fname).prop("readonly","");
+                                //$("#"+fname).prop("readonly","");
                             });
                 }else{
                     message("Entr\351e invalide!");

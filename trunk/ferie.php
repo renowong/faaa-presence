@@ -12,6 +12,7 @@ include_once('menu.php');
         <script type="text/javascript">
         $(document).ready(function () {
             $('#datepicker').datepicker({
+                    beforeShowDay: $.datepicker.noWeekends,
                     inline: true
             });
             
