@@ -12,6 +12,9 @@ switch($f){
     case 'list':
         loadlist($_POST['year']); 
     break;
+    case 'delete':
+        delete($_POST['ferieid']); 
+    break;
 }
 
 
@@ -37,6 +40,16 @@ function insert($day,$month,$year){
     ////set the query
     $query = sprintf("INSERT INTO `feries` (`ferieid`,`day`,`month`,`year`) VALUES (NULL,'%s','%s','%s')"
                      ,$day,$month,$year);
+    $mysqli->query($query);
+    $mysqli->close();
+    print $query;
+}
+
+function delete($id){
+    $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
+    ////set the query
+    $query = sprintf("DELETE FROM `feries` WHERE `ferieid`='%s'"
+                     ,$id);
     $mysqli->query($query);
     $mysqli->close();
     print $query;
