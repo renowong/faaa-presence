@@ -9,6 +9,7 @@ include_once('menu.php');
 <html><head>
 <link rel='stylesheet' type='text/css' href='css/cssreset.css' />
     <?php echo $title.$icon.$charset.$nocache.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
+    <style type="text/css"><? echo getBrowserCss(); ?></style>
         <!-- jquery -->
         <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
@@ -271,4 +272,16 @@ Ann&eacute;e :
             </td>
         </tr>
     </table>
+<div id="agents_names">		
+    <table>		
+        <tbody>		
+            <?		
+            foreach ($ar_agents as &$ar_agent){		
+                print "<tr class=\"tr_agents_names\" style=\"background-color:lightgrey;\"><td style=\"vertical-align: top;\">".$ar_agent[1]."</td></tr>";		
+                print "<tr class=\"tr_agents_names\"><td style=\"vertical-align: top;\">".$ar_agent[2]."</td></tr>";		
+            }		
+            ?>		
+        </tbody>		
+    </table>		
+</div>
 </body></html>
