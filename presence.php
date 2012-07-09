@@ -11,7 +11,6 @@ include_once('menu.php');
     <?php echo $title.$icon.$charset.$nocache.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
     <style type="text/css"><? echo getBrowserCss(); ?></style>
         <!-- jquery -->
-        <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function () {
         
@@ -23,6 +22,7 @@ include_once('menu.php');
         }
         
         loadferies($("#editmonth").val(),$("#edityear").val());
+        $( "input:submit, button" ).button();
         });
         
         

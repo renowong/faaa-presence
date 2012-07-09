@@ -33,6 +33,7 @@ include_once('menu.php');
             });
 
             loadlist();
+            $( "input:submit, button" ).button();
         });
         
         function loadlist(){
