@@ -5,12 +5,12 @@ $ar_days = array("D","L","M","M","J","V","S");
 
 $firstday = date("w",mktime(0,0,0,$_GET['month'],1,$_GET['year']));
 
-$days = "<Row ss:AutoFitHeight=\"0\" ss:Height=\"16.4952\"><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce4\"><Data ss:Type=\"String\">NOM Prénom</Data></Cell><Cell ss:StyleID=\"ce16\"/>";
+$days = "<Row ss:AutoFitHeight=\"0\" ss:Height=\"16.4952\"><Cell ss:MergeDown=\"1\" ss:StyleID=\"ce4\"><Data ss:Type=\"String\">NOM Prénom</Data></Cell><Cell ss:StyleID=\"ce49\"/>";
 
 $j = $firstday;
 
 for ($i=1;$i<=$maxdays;$i++){
-    if($j==0||$j==6){$style="ce6";}else{$style="ce26";}
+    if($j==0||$j==6){$style="ce6";}else{$style="ce49";}
     $days .= "<Cell ss:StyleID=\"$style\"><Data ss:Type=\"String\">".$ar_days[$j]."</Data></Cell>";
     if($j==6){$j=0;}else{$j++;}
 }
