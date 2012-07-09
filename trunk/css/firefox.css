@@ -1,10 +1,10 @@
 #agents_names {
 	position:fixed;
-	top:149px;
+	top:163px;
 	left:0px;
 	z-index:2;
 }
 
 .tr_agents_names {
-    height:23px;
+    height:20px;
 }

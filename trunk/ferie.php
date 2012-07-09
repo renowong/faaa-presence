@@ -58,20 +58,15 @@ include_once('menu.php');
 </head><body>
 <div name="message" id="message" ></div>
 <? print $menu ?>
-<table width='100%'>
+<table>
     <tr>
         <td>
             <h1>Gestion des F&eacute;ri&eacute;s</h1>
             <p>Date: <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
-        </td>
-    </tr>
-</table>
-<table width='100%'>
-    <tr>
-        <td>
+            <hr/>
             <h1>F&eacute;ri&eacute;s de cette ann&eacute;e</h1>
             <div id="ferielist" />
         </td>
-    </tr>
+    </tr>    
 </table>
 </body></html>

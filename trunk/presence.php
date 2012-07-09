@@ -8,7 +8,7 @@ include_once('menu.php');
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
 <link rel='stylesheet' type='text/css' href='css/cssreset.css' />
-    <?php echo $title.$icon.$charset.$nocache.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
+    <?php echo $title.$icon.$charset.$nocache.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
     <style type="text/css"><? echo getBrowserCss(); ?></style>
         <!-- jquery -->
         <script type="application/x-javascript" src="js/jquery-1.7.2.min.js"></script>
@@ -194,24 +194,27 @@ include_once('menu.php');
 <input type="hidden" id="agentsids" value="<? print $agentsids; ?>"/>
 <input type="hidden" id="svc" value="<? print $service; ?>"/>
 <input type="hidden" id="maxdays" value="<? print cal_days_in_month(CAL_GREGORIAN, $selectedmonth, $selectedyear); ?>"/>
-<button onclick="window.location='presence.php';">Mois en cours</button><button onclick="extract();">Excel</button>
-<?
-if($isdir=="true"){
-    print "| <input type=\"checkbox\" id=\"showall\" name=\"showall\" onchange=\"showall(this.checked);\"$showall /> Afficher les services";
-}
-?>
-<p>Mois : <select id="slt_month">
-    <? print $months ?>
-</select>
-Ann&eacute;e :
-<select id="slt_annee">
-    <? print $years ?>
-</select>
-<button onclick="loaddate();">Charger</button>
-</p>
+<div id="presence_selector" name="presence_selector">
+    <button onclick="window.location='presence.php';">Mois en cours</button> <button onclick="extract();">Excel</button>
+    <?
+    if($isdir=="true"){
+        print "| <input type=\"checkbox\" id=\"showall\" name=\"showall\" onchange=\"showall(this.checked);\"$showall /> Afficher les services";
+    }
+    ?>
+    <br/><br/>
+    <p>Mois : <select id="slt_month">
+        <? print $months ?>
+    </select>
+    Ann&eacute;e :
+    <select id="slt_annee">
+        <? print $years ?>
+    </select>
+    <button onclick="loaddate();">Charger</button>
+    </p>
+</div>
 <form>
-<table width='100%'>
-  <tbody>
+<table class="tbl_presence">
+  <tbody class="td_presence">
     <tr style="font-weight:bold;">
       <td>
       </td>
@@ -222,26 +225,26 @@ Ann&eacute;e :
       </td>
     </tr>
     <tr style="font-weight:bold;">
-      <td>Agent
+      <td class="td_presence">Agent
       </td>
-      <td>HA/HD
+      <td class="td_presence">HA/HD
       </td>
         <? print buildcol("num","",$selectedmonth,$selectedyear) ?>
-      <td>Total
+      <td class="td_presence">Total
       </td>
     </tr>
     <?
     foreach ($ar_agents as &$ar_agent){
         print "<tr style=\"background-color:lightgrey;\" title=\"".$ar_agent[1]." ".$ar_agent[2]." HA\">";
-        print "<td style=\"vertical-align: top;\">".$ar_agent[1]."</td>";
-        print "<td style=\"vertical-align: top;\">HA</td>";
+        print "<td class=\"td_names\">".$ar_agent[1]."</td>";
+        print "<td class=\"td_names\">HA</td>";
         print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
         print "<td colspan=\"1\" rowspan=\"2\" style=\"vertical-align: top;\">";
         print "<input type=\"hidden\" id=\"total_".$ar_agent[0]."\" /><span id=\"span_total_".$ar_agent[0]."\" />";
         print "</td></tr>";
         print "<tr title=\"".$ar_agent[1]." ".$ar_agent[2]." HD\">";
-        print "<td style=\"vertical-align: top;\">".$ar_agent[2]."</td>";
-        print "<td style=\"vertical-align: top;\">HD</td>";
+        print "<td class=\"td_names\">".$ar_agent[2]."</td>";
+        print "<td class=\"td_names\">HD</td>";
         print "</td>";
         print buildcol("hd",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
         print "</tr>";
@@ -273,12 +276,12 @@ Ann&eacute;e :
         </tr>
     </table>
 <div id="agents_names">		
-    <table>		
+    <table class="tbl_presence">		
         <tbody>		
             <?		
             foreach ($ar_agents as &$ar_agent){		
-                print "<tr class=\"tr_agents_names\" style=\"background-color:lightgrey;\"><td style=\"vertical-align: top;\">".$ar_agent[1]."</td></tr>";		
-                print "<tr class=\"tr_agents_names\"><td style=\"vertical-align: top;\">".$ar_agent[2]."</td></tr>";		
+                print "<tr class=\"tr_agents_names\" style=\"background-color:lightgrey;\"><td class=\"td_names\">".$ar_agent[1]."</td></tr>";		
+                print "<tr class=\"tr_agents_names\"><td class=\"td_names\">".$ar_agent[2]."</td></tr>";		
             }		
             ?>		
         </tbody>		
