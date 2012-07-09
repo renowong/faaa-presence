@@ -74,14 +74,16 @@ include_once('menu.php');
 </head><body>
 <div name="message" id="message" ></div>
 <? print $menu ?>
-<table width='100%'>
+<table>
     <tr>
-        <td width='20%'>
+        <td width='250px' style="vertical-align:top;">
             <h1>Services</h1>
+            <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service'/> <button onclick='addsvc();'>Ajouter Service</button>
+            <hr/>
+            <h1>Liste des Services</h1>
             <div id="list_services">
             <? print $services ?>
             </div>
-            <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service'/><button onclick='addsvc();'>Ajouter Service</button>
         </td>
         <td>
             <h1>Gestion Agents</h1>
@@ -89,20 +91,18 @@ include_once('menu.php');
             <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
                 <option>Selectionner Agent</option>
                 <? print $agents ?>
-            </select>
-            <br/>
-            <button onclick='init_edit();'>Ajouter Nouvel Agent</button>
+            </select> | <button onclick='init_edit();'>RAZ</button>
             <hr/>
             <div id='editagent'>
                 <h1>Edition</h1>
                 <input type='hidden' id='editid' name='editid'/>
-                Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/>
-                Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;'/><br/>
-                Prenom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;'/><br/>
+                Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/><br/>
+                Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;'/><br/><br/>
+                Prenom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;'/><br/><br/>
                 Service : <select id='slt_services' name='slt_services'>
                 <? print $lst_services ?>
                 </select>
-                <br/>
+                <br/><br/>
                 <button onclick='update_agent();'>Ajouter / Mettre &agrave; jour</button>
             </div>
         </td>

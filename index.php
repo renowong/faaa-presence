@@ -27,8 +27,8 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 			})
 			
 			$( "#dialog-form" ).dialog({
-				height: 160,
-				width: 300,
+				height: 180,
+				width: 320,
 				modal: false,
 				resizable: false,
 				buttons: {
@@ -103,7 +103,7 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 		<div name="message" id="message" ></div>
 		<div id="dialog-form" title="Pr&eacute;sence">
 			<form style="text-align:right;">
-				Utilisateur : <input type="text" name="login" id="login" value="" maxlength="10" size="20" autocomplete="off" /><br/>
+				Utilisateur : <input type="text" name="login" id="login" value="" maxlength="10" size="20" autocomplete="off" /><br/><br/>
 				Mot de passe : <input type="password" name="password" id="password"value="" maxlength="10" size="20" autocomplete="off" />
 			</form>
 		</div>

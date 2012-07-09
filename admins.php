@@ -77,7 +77,7 @@ include_once('menu.php');
 </head><body>
 <div name="message" id="message" ></div>
 <? print $menu ?>
-<table width='100%'>
+<table class="gestion">
     <tr>
         <td>
             <h1>Gestion Agents</h1>
@@ -86,8 +86,8 @@ include_once('menu.php');
                 <option>Selectionner Agent</option>
                 <? print $users ?>
             </select>
-            <br/>
-            <button onclick='init_edit();'>Ajouter Nouvel Agent</button>
+            |
+            <button onclick='init_edit();'>RAZ</button>
             <hr/>
             <div id='editagent'>
                 <h1>Edition</h1>
@@ -96,7 +96,8 @@ include_once('menu.php');
                 Login : <input type='text' id='txt_login' name='txt_login' style='text-transform:lowercase;' /><br/>
                 Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;' /><br/>
                 Pr&eacute;nom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /><br/>
-                Mot de passe : <input type='text' id='txt_password' name='txt_password' /> <i>Laisser vide pour garder l'ancien mot de passe</i><br/>
+                Mot de passe : <input type='text' id='txt_password' name='txt_password' /> <br/>
+                <span class="note">Laisser vide pour garder l'ancien mot de passe</span><br/>
                 Service : <select id='slt_services' name='slt_services'>
                 <? print $lst_services ?>
                 </select>
