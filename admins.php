@@ -91,18 +91,38 @@ include_once('menu.php');
             <hr/>
             <div id='editagent'>
                 <h1>Edition</h1>
-                <input type='hidden' id='editid' name='editid'/>
-                Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/>
-                Login : <input type='text' id='txt_login' name='txt_login' style='text-transform:lowercase;' /><br/>
-                Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;' /><br/>
-                Pr&eacute;nom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /><br/>
-                Mot de passe : <input type='text' id='txt_password' name='txt_password' /> <br/>
-                <span class="note">Laisser vide pour garder l'ancien mot de passe</span><br/>
-                Service : <select id='slt_services' name='slt_services'>
-                <? print $lst_services ?>
-                </select>
-                <br/>
-                <button onclick='update_user();'>Ajouter / Mettre &agrave; jour</button>
+                <table class="form">
+                    <tr>
+                        <td colspan="2"><input type='hidden' id='editid' name='editid'/>
+                        Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Login :</td>
+                        <td><input type='text' id='txt_login' name='txt_login' style='text-transform:lowercase;' /></td>
+                    </tr>
+                    <tr>
+                        <td>Nom :</td>
+                        <td><input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;' /></td>
+                    </tr>
+                    <tr>
+                        <td>Pr&eacute;nom :</td>
+                        <td><input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /></td>
+                    </tr>
+                    <tr>
+                        <td>Mot de passe :</td>
+                        <td><input type='text' id='txt_password' name='txt_password' />
+                        <br/><span class="note">Laisser vide pour garder l'ancien mot de passe</span></td>
+                    </tr>
+                    <tr>
+                        <td>Service :</td>
+                        <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
+                    </tr>
+                    <tr><td colspan="2"><button onclick='update_user();'>Ajouter / Mettre &agrave; jour</button></td>
+                    </tr>
+                </table>
+
+                
             </div>
         </td>
     </tr>
