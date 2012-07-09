@@ -11,6 +11,7 @@ th {
 	font-family: helvetica, sans-serif;
 	font-weight: bold;
 	font-size: 18px;
+	background-color:grey;
 }
 
 h1 {
@@ -72,6 +73,7 @@ table{
 .form {
 	border-collapse:collapse;
 	border:none;
+	width:100%;
 }
 
 .note {

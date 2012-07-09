@@ -61,11 +61,23 @@ include_once('menu.php');
 <table>
     <tr>
         <td>
-            <h1>Gestion des F&eacute;ri&eacute;s</h1>
-            <p>Date: <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
+            <table class="form">
+                <th>Gestion des F&eacute;ri&eacute;s</th>
+                <tr>
+                    <td>
+                        Date: <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
+                    </td>
+                </tr>
+            </table>
             <hr/>
-            <h1>F&eacute;ri&eacute;s de cette ann&eacute;e</h1>
-            <div id="ferielist" />
+            <table class="form">
+                <th>F&eacute;ri&eacute;s de cette ann&eacute;e</th>
+                <tr>
+                    <td>
+                        <div id="ferielist" />
+                        </td>
+                </tr>
+            </table>
         </td>
     </tr>    
 </table>

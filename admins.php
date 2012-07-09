@@ -80,18 +80,24 @@ include_once('menu.php');
 <table class="gestion">
     <tr>
         <td>
-            <h1>Gestion Agents</h1>
-            Edition
-            <select id='slt_users' name='slt_users' onchange='load_user(this.value);'>
-                <option>Selectionner Agent</option>
-                <? print $users ?>
-            </select>
-            |
-            <button onclick='init_edit();'>RAZ</button>
+            <table class="form">
+                <th>Gestion Agents</th>
+                <tr>
+                    <td>
+                    Edition
+                    <select id='slt_users' name='slt_users' onchange='load_user(this.value);'>
+                        <option>Selectionner Agent</option>
+                        <? print $users ?>
+                    </select>
+                    |
+                    <button onclick='init_edit();'>RAZ</button>
+                    </td>
+                </tr>
+            </table>
             <hr/>
             <div id='editagent'>
-                <h1>Edition</h1>
                 <table class="form">
+                    <th colspan="2">Edition</th>
                     <tr>
                         <td colspan="2"><input type='hidden' id='editid' name='editid'/>
                         Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/>

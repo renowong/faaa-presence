@@ -77,25 +77,44 @@ include_once('menu.php');
 <table>
     <tr>
         <td width='250px' style="vertical-align:top;">
-            <h1>Services</h1>
-            <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service'/> <button onclick='addsvc();'>Ajouter Service</button>
+            <table class="form">
+                <th>Services</th>
+            <tr>
+                    <td>
+                        <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service'/> <button onclick='addsvc();'>Ajouter Service</button>
+                    </td>
+                </tr>
+            </table>
             <hr/>
-            <h1>Liste des Services</h1>
-            <div id="list_services">
-            <? print $services ?>
-            </div>
+            <table class="form">
+                <th>Liste des Services</th>
+                <tr>
+                    <td>
+                        <div id="list_services">
+                        <? print $services ?>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </td>
         <td>
-            <h1>Gestion Agents</h1>
-            Edition
-            <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
-                <option>Selectionner Agent</option>
-                <? print $agents ?>
-            </select> | <button onclick='init_edit();'>RAZ</button>
+            <table class="form">
+                <th>Gestion Agents</th>
+            <tr>
+                    <td>Edition
+                        <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
+                            <option>Selectionner Agent</option>
+                            <? print $agents ?>
+                        </select> | <button onclick='init_edit();'>RAZ</button>
+                    </td>
+                </tr>
+            </table>
             <hr/>
-            <div id='editagent'>
-                <h1>Edition</h1>
+            <div id='editagent' width="100%">
                 <table class="form">
+                    <tr>
+                        <th colspan="2">Edition</th>
+                       </tr>     
                     <tr>
                         <td><input type='hidden' id='editid' name='editid'/>Compte Actif :</td>
                         <td><input type='checkbox' id='chk_actif' name='chk_actif' checked/></td>
