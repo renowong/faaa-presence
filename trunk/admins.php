@@ -12,7 +12,7 @@ include_once('menu.php');
         <script type="text/javascript">
         $(document).ready(function () {
         
-       
+        $( "input:submit, button" ).button();
         });
         
         function addsvc(){
