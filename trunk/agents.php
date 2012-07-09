@@ -95,15 +95,28 @@ include_once('menu.php');
             <hr/>
             <div id='editagent'>
                 <h1>Edition</h1>
-                <input type='hidden' id='editid' name='editid'/>
-                Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/><br/><br/>
-                Nom : <input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;'/><br/><br/>
-                Prenom : <input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;'/><br/><br/>
-                Service : <select id='slt_services' name='slt_services'>
-                <? print $lst_services ?>
-                </select>
-                <br/><br/>
-                <button onclick='update_agent();'>Ajouter / Mettre &agrave; jour</button>
+                <table class="form">
+                    <tr>
+                        <td><input type='hidden' id='editid' name='editid'/>Compte Actif :</td>
+                        <td><input type='checkbox' id='chk_actif' name='chk_actif' checked/></td>
+                    </tr>
+                    <tr>
+                        <td>Nom :</td>
+                        <td><input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;'/></td>
+                    </tr>
+                    <tr>
+                        <td>Prenom :</td>
+                        <td><input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;'/></td>
+                    </tr>
+                    <tr>
+                        <td>Service :</td>
+                        <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button onclick='update_agent();'>Ajouter / Mettre &agrave; jour</button></td>
+                    </tr>
+                </table>
+                
             </div>
         </td>
     </tr>

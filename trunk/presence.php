@@ -256,7 +256,7 @@ include_once('menu.php');
 <br>
     <table>
         <tr>
-            <th colspan="2">
+            <th colspan="2" style="padding:10px">
                 Valeurs autoris&eacute;es
             </th>
         </tr>
