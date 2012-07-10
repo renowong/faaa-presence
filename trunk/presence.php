@@ -9,7 +9,6 @@ include_once('menu.php');
 <html><head>
 <link rel='stylesheet' type='text/css' href='css/cssreset.css' />
     <?php echo $title.$icon.$charset.$nocache.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
-    <style type="text/css"><? echo getBrowserCss(); ?></style>
         <!-- jquery -->
         <script type="text/javascript">
         $(document).ready(function () {
@@ -212,37 +211,35 @@ include_once('menu.php');
     <button onclick="loaddate();">Charger</button>
     </p>
 </div>
-<form>
+<div class="div_presence">
 <table class="tbl_presence">
     <th colspan="35">Tableau des pr&eacute;sences</th>
   <tbody class="td_presence">
     <tr style="font-weight:bold;">
-      <td>
-      </td>
-      <td>
+      <td colspan="2">
       </td>
         <? print buildcol("day","",$selectedmonth,$selectedyear) ?>
       <td rowspan="2" class="td_presence">Total
       </td>
     </tr>
     <tr style="font-weight:bold;">
-      <td class="td_presence">Agent
+      <td class="td_names staticcol" style="background-color:lightyellow;">Agent
       </td>
-      <td class="td_presence">HA/HD
+      <td class="td_names">HA/HD
       </td>
         <? print buildcol("num","",$selectedmonth,$selectedyear) ?>
     </tr>
     <?
     foreach ($ar_agents as &$ar_agent){
         print "<tr style=\"background-color:lightgrey;\" title=\"".$ar_agent[1]." ".$ar_agent[2]." HA\">";
-        print "<td class=\"td_names\">".$ar_agent[1]."</td>";
+        print "<td class=\"td_names staticcol\" style=\"background-color:lightgrey;\">".$ar_agent[1]."</td>";
         print "<td class=\"td_names\">HA</td>";
         print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
         print "<td colspan=\"1\" rowspan=\"2\" style=\"vertical-align: middle;\">";
         print "<input type=\"hidden\" id=\"total_".$ar_agent[0]."\" /><span id=\"span_total_".$ar_agent[0]."\" style=\"font-weight:bold;\"/>";
         print "</td></tr>";
         print "<tr title=\"".$ar_agent[1]." ".$ar_agent[2]." HD\">";
-        print "<td class=\"td_names\">".$ar_agent[2]."</td>";
+        print "<td class=\"td_names staticcol\" style=\"background-color:lightyellow;\">".$ar_agent[2]."</td>";
         print "<td class=\"td_names\">HD</td>";
         print "</td>";
         print buildcol("hd",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
@@ -251,7 +248,7 @@ include_once('menu.php');
     ?>
   </tbody>
 </table>
-</form>
+</div>
 <br>
     <table>
             <th colspan="2">
@@ -272,16 +269,4 @@ include_once('menu.php');
             </td>
         </tr>
     </table>
-<div id="agents_names">		
-    <table class="tbl_presence">		
-        <tbody>		
-            <?		
-            foreach ($ar_agents as &$ar_agent){		
-                print "<tr class=\"tr_agents_names\" style=\"background-color:lightgrey;\"><td class=\"td_names\">".$ar_agent[1]."</td></tr>";		
-                print "<tr class=\"tr_agents_names\"><td class=\"td_names\">".$ar_agent[2]."</td></tr>";		
-            }		
-            ?>		
-        </tbody>		
-    </table>		
-</div>
 </body></html>

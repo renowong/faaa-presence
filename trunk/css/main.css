@@ -5,6 +5,7 @@ body {
 	font-family: helvetica, sans-serif;
 	font-weight: normal;
 	font-size: 12px;
+	overflow-x:hidden;
 }
 
 th {
@@ -53,7 +54,7 @@ th,td{
 
 .td_presence {
 	border:dotted 1px #000;
-	vertical-align:top;
+	vertical-align:middle;
 	font-family: helvetica, sans-serif;
 	font-size: 12px;
 	text-align:center;
@@ -61,19 +62,36 @@ th,td{
 	padding:0px;
 }
 
+.staticcol{
+	position:absolute;
+	width:5em;
+	left:0; top:auto;
+}
+
 .td_names {
 	font-family: helvetica, sans-serif;
 	font-size: 12px;
-	vertical-align:top;
+	vertical-align:middle;
+	text-align:left;
 	border:dotted 1px #000;
-	width:1px;
+	width:10em;
 	border:0px;
 	padding:0px;
+	height:24px;
 }
 
 .tbl_presence {
 	border-collapse:collapse;
 	width:100%;
+	overflow-x:scroll;  
+	/*margin-left:10em; */
+	overflow-y:visible;
+}
+
+.div_presence {
+	overflow-x:scroll;  
+	margin-left:10em; 
+	overflow-y:visible;
 }
 
 .form {
