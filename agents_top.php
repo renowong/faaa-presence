@@ -23,7 +23,7 @@ function getlist_services(){
 	$query = sprintf("SELECT * FROM `services` ORDER BY `designation`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->designation."'>".strtoupper($row->designation)."</option>";            
+        $output .= "<option value='".strtoupper($row->designation)."'>".strtoupper($row->designation)."</option>";            
         }
         $mysqli->close();
         
@@ -36,7 +36,7 @@ function getagents(){
 	$query = sprintf("SELECT * FROM `agents` ORDER BY `nom`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->agentid."_".$row->nom."_".$row->prenom."_".$row->service."_".$row->active."'>".$row->nom." ".$row->prenom." (".$row->service.")</option><br/>";            
+        $output .= "<option value='".$row->agentid."_".$row->nom."_".$row->prenom."_".strtoupper($row->service)."_".$row->active."'>".$row->nom." ".$row->prenom." (".$row->service.")</option><br/>";            
         }
         $mysqli->close();
         

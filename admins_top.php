@@ -11,7 +11,7 @@ function getlist_services(){
 	$query = sprintf("SELECT * FROM `services` ORDER BY `designation`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->designation."'>".strtoupper($row->designation)."</option>";            
+        $output .= "<option value='".strtoupper($row->designation)."'>".strtoupper($row->designation)."</option>";            
         }
         $mysqli->close();
         
@@ -24,7 +24,7 @@ function getusers(){
 	$query = sprintf("SELECT * FROM `users` ORDER BY `userlastname`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->userid."_".$row->userlogin."_".$row->userlastname."_".$row->userfirstname."_".$row->userservice."_".$row->userisactive."'>".$row->userlastname." ".$row->userfirstname." (".$row->userlogin.")</option><br/>";            
+        $output .= "<option value='".$row->userid."_".$row->userlogin."_".$row->userlastname."_".$row->userfirstname."_".strtoupper($row->userservice)."_".$row->userisactive."'>".$row->userlastname." ".$row->userfirstname." (".$row->userlogin.")</option><br/>";            
         }
         $mysqli->close();
         

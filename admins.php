@@ -25,7 +25,7 @@ include_once('menu.php');
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
             var actif;
-            if($("#chk_actif").checked){actif=1;}else{actif=0;};
+            if($("#chk_actif").is(":checked")){actif=1;}else{actif=0;};
             if(id.length==0 && password.length==0){message("Veuillez entrer un mot de passe");checklist=false;$("#txt_password").focus();}
             if(prenom.length==0){message("Veuillez entrer un pr\351nom");checklist=false;$("#txt_prenom").focus();}
             if(nom.length==0){message("Veuillez entrer un nom");checklist=false;$("#txt_nom").focus();}
@@ -48,6 +48,7 @@ include_once('menu.php');
             $("#txt_prenom").val('');
             $("#editid").val('');
             $("#slt_services option:eq(0)").prop("selected", "selected");
+            $("#slt_users option:eq(0)").prop("selected", "selected");
             $("#chk_actif").prop("checked","checked");
         }
         
@@ -58,7 +59,12 @@ include_once('menu.php');
             $("#txt_login").val(ar_data[1]);
             $("#txt_nom").val(ar_data[2]);
             $("#txt_prenom").val(ar_data[3]);
-            if(active==1){$("#chk_actif").prop("checked", true);}else{$("#chk_actif").attr("checked", false);}
+            if(active==1){$("#chk_actif").prop("checked", true);}else{$("#chk_actif").prop("checked", false);}
+            //$("#slt_services option").each(function() {
+            //    if($(this).text() === ar_data[4]) {
+            //      $(this).prop('selected', 'selected');            
+            //    }                        
+            //});
             $("#slt_services").val(ar_data[4]).prop("selected", "selected");
         }
     </script>
