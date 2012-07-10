@@ -15,14 +15,14 @@ float: left;
 /*Top level menu link items style*/
 .horizontalcssmenu ul li a{
 display: block;
-width: 120px; /*Width of top level menu link items*/
+width: 140px; /*Width of top level menu link items*/
 padding: 2px 8px;
 border: 1px solid #202020;
 border-left-width: 0;
 text-decoration: none;
 background: url(../img/menubg.gif) center center repeat-x;
 color: black;
-font: bold 13px Tahoma;
+font: bold 12px Tahoma;
 }
 	
 /*Sub level menu*/
