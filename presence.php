@@ -221,7 +221,7 @@ include_once('menu.php');
       <td>
       </td>
         <? print buildcol("day","",$selectedmonth,$selectedyear) ?>
-      <td>Total
+      <td rowspan="2" class="td_presence">Total
       </td>
     </tr>
     <tr style="font-weight:bold;">
@@ -230,8 +230,6 @@ include_once('menu.php');
       <td class="td_presence">HA/HD
       </td>
         <? print buildcol("num","",$selectedmonth,$selectedyear) ?>
-      <td class="td_presence">Total
-      </td>
     </tr>
     <?
     foreach ($ar_agents as &$ar_agent){
@@ -239,8 +237,8 @@ include_once('menu.php');
         print "<td class=\"td_names\">".$ar_agent[1]."</td>";
         print "<td class=\"td_names\">HA</td>";
         print buildcol("ha",$ar_agent[0],$selectedmonth,$selectedyear,$ar_agent[1],$ar_agent[2]);
-        print "<td colspan=\"1\" rowspan=\"2\" style=\"vertical-align: top;\">";
-        print "<input type=\"hidden\" id=\"total_".$ar_agent[0]."\" /><span id=\"span_total_".$ar_agent[0]."\" />";
+        print "<td colspan=\"1\" rowspan=\"2\" style=\"vertical-align: middle;\">";
+        print "<input type=\"hidden\" id=\"total_".$ar_agent[0]."\" /><span id=\"span_total_".$ar_agent[0]."\" style=\"font-weight:bold;\"/>";
         print "</td></tr>";
         print "<tr title=\"".$ar_agent[1]." ".$ar_agent[2]." HD\">";
         print "<td class=\"td_names\">".$ar_agent[2]."</td>";
