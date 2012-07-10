@@ -98,7 +98,7 @@ include_once('menu.php');
             <table>
                 <th colspan="2">Gestion Agents</th>
             <tr>
-                    <td colspan="2">Edition
+                    <td colspan="2">Editer
                         <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
                             <option>Selectionner Agent</option>
                             <? print $agents ?>
@@ -115,7 +115,7 @@ include_once('menu.php');
                         <td><input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;'/></td>
                     </tr>
                     <tr>
-                        <td>Prenom :</td>
+                        <td>Pr&eacute;nom :</td>
                         <td><input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;'/></td>
                     </tr>
                     <tr>

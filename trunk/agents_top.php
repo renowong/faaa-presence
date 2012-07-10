@@ -7,7 +7,7 @@ $agents = getagents();
 function getservices(){
     	$mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
 	////set the query
-	$query = sprintf("SELECT * FROM `services`");
+	$query = sprintf("SELECT * FROM `services` ORDER BY `designation`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
         $output .= "<span id='".$row->idservice."'>".strtoupper($row->designation)."</span><br/>";            
@@ -23,7 +23,7 @@ function getlist_services(){
 	$query = sprintf("SELECT * FROM `services` ORDER BY `designation`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->designation."'>".$row->designation."</option>";            
+        $output .= "<option value='".$row->designation."'>".strtoupper($row->designation)."</option>";            
         }
         $mysqli->close();
         
