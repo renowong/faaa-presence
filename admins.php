@@ -15,25 +15,9 @@ include_once('menu.php');
         $( "input:submit, button" ).button();
         });
         
-        //function addsvc(){
-        //    var newsvc = $("#txt_service").val();
-        //    if (newsvc=='') {
-        //        alert("aucune entr\351e!");
-        //    }else{
-        //        sendsvc(newsvc);
-        //    }
-        //}
-        //
-        //function sendsvc(s){
-        //    $.post("addservice.php", {s:s},
-        //        function(response) {
-        //        //readresponse(response);
-        //        //alert(response);
-        //        });
-        //    window.location = 'agents.php';
-        //}
-        
+       
         function update_user(){
+            var checklist = true;
             var login = $("#txt_login").val();
             var nom = $("#txt_nom").val();
             var prenom = $("#txt_prenom").val();
@@ -41,14 +25,21 @@ include_once('menu.php');
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
             var actif;
-            if($("#chk_actif").attr("checked")=="checked"){actif=1;}else{actif=0;};
-            
-            $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,password:password,svc:svc,actif:actif},
+            if($("#chk_actif").checked){actif=1;}else{actif=0;};
+            if(id.length==0 && password.length==0){message("Veuillez entrer un mot de passe");checklist=false;$("#txt_password").focus();}
+            if(prenom.length==0){message("Veuillez entrer un pr\351nom");checklist=false;$("#txt_prenom").focus();}
+            if(nom.length==0){message("Veuillez entrer un nom");checklist=false;$("#txt_nom").focus();}
+            if(login.length==0){message("Veuillez entrer un login");checklist=false;$("#txt_login").focus();}
+
+            if(checklist){
+                $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,password:password,svc:svc,actif:actif},
                 function(response) {
                 //readresponse(response);
-                alert(response);
+                //alert(response);
                 });
-            window.location = 'admins.php';
+                window.location = 'admins.php';
+            }
+            
         }
         
         function init_edit(){
@@ -56,7 +47,8 @@ include_once('menu.php');
             $("#txt_nom").val('');
             $("#txt_prenom").val('');
             $("#editid").val('');
-            $("#slt_services option:eq(0)").attr("selected", "selected");
+            $("#slt_services option:eq(0)").prop("selected", "selected");
+            $("#chk_actif").prop("checked","checked");
         }
         
         function load_user(data){
@@ -66,19 +58,15 @@ include_once('menu.php');
             $("#txt_login").val(ar_data[1]);
             $("#txt_nom").val(ar_data[2]);
             $("#txt_prenom").val(ar_data[3]);
-            if(active==1){$("#chk_actif").attr("checked", true);}else{$("#chk_actif").attr("checked", false);}
-            //$('#slt_services')
-            //    .prepend($("<option></option>")
-            //    .attr("value",ar_data[3])
-            //    .text(ar_data[3]));
-            $("#slt_services").val(ar_data[4]).attr("selected", "selected");
+            if(active==1){$("#chk_actif").prop("checked", true);}else{$("#chk_actif").attr("checked", false);}
+            $("#slt_services").val(ar_data[4]).prop("selected", "selected");
         }
     </script>
 </head><body>
 <div name="message" id="message" ></div>
 <? print $menu ?>
     <table>
-        <th colspan="2">Gestion Agents</th>
+        <th colspan="2">Gestion des acc&egrave;s</th>
         <tr>
             <td colspan="2">
             Edition
@@ -111,7 +99,7 @@ include_once('menu.php');
             </tr>
             <tr>
                 <td>Mot de passe :</td>
-                <td><input type='text' id='txt_password' name='txt_password' />
+                <td><input type='password' id='txt_password' name='txt_password' />
                 <br/><span class="note">Laisser vide pour garder l'ancien mot de passe</span></td>
             </tr>
             <tr>
