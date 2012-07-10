@@ -11,7 +11,7 @@ function getlist_services(){
 	$query = sprintf("SELECT * FROM `services` ORDER BY `designation`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->designation."'>".$row->designation."</option>";            
+        $output .= "<option value='".$row->designation."'>".strtoupper($row->designation)."</option>";            
         }
         $mysqli->close();
         
