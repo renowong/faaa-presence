@@ -214,6 +214,7 @@ include_once('menu.php');
 </div>
 <form>
 <table class="tbl_presence">
+    <th colspan="35">Tableau des pr&eacute;sences</th>
   <tbody class="td_presence">
     <tr style="font-weight:bold;">
       <td>
