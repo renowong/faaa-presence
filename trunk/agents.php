@@ -19,14 +19,23 @@ include_once('menu.php');
         function addsvc(){
             var newsvc = $("#txt_service").val();
             if (newsvc=='') {
-                alert("aucune entr\351e!");
+                message("aucune entr\351e!");
             }else{
                 sendsvc(newsvc);
             }
         }
         
         function sendsvc(s){
-            $.post("addservice.php", {s:s},
+            $.post("addservice.php", {s:s,t:"insert"},
+                function(response) {
+                //readresponse(response);
+                //alert(response);
+                });
+            window.location = 'agents.php';
+        }
+        
+        function deletesvc(s){
+            $.post("addservice.php", {s:s,t:"delete"},
                 function(response) {
                 //readresponse(response);
                 //alert(response);
@@ -68,7 +77,11 @@ include_once('menu.php');
             //    .prepend($("<option></option>")
             //    .attr("value",ar_data[3])
             //    .text(ar_data[3]));
-            $("#slt_services").val(ar_data[3]).attr("selected", "selected");
+            $("#slt_services option").each(function() {
+                if($(this).text() === ar_data[3]) {
+                  $(this).attr('selected', 'selected');            
+                }                        
+              });
         }
     </script>
 </head><body>
