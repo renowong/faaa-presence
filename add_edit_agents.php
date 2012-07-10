@@ -5,7 +5,7 @@ include_once('config.php');
     $id = $_POST['id'];
     $nom = strtoupper($_POST['nom']);
     $prenom = ucfirst($_POST['prenom']);
-    $svc = $_POST['svc'];
+    $svc = strtoupper($_POST['svc']);
     $actif = $_POST['actif'];
     
     if($id>0){

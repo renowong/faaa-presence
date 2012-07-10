@@ -63,7 +63,7 @@ include_once('menu.php');
                 <th>Gestion des F&eacute;ri&eacute;s</th>
                 <tr>
                     <td>
-                        Date: <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
+                        Date <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
                     </td>
                 </tr>
                 <th>F&eacute;ri&eacute;s de cette ann&eacute;e</th>
