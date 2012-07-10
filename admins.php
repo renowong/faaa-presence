@@ -15,23 +15,23 @@ include_once('menu.php');
         $( "input:submit, button" ).button();
         });
         
-        function addsvc(){
-            var newsvc = $("#txt_service").val();
-            if (newsvc=='') {
-                alert("aucune entr\351e!");
-            }else{
-                sendsvc(newsvc);
-            }
-        }
-        
-        function sendsvc(s){
-            $.post("addservice.php", {s:s},
-                function(response) {
-                //readresponse(response);
-                //alert(response);
-                });
-            window.location = 'agents.php';
-        }
+        //function addsvc(){
+        //    var newsvc = $("#txt_service").val();
+        //    if (newsvc=='') {
+        //        alert("aucune entr\351e!");
+        //    }else{
+        //        sendsvc(newsvc);
+        //    }
+        //}
+        //
+        //function sendsvc(s){
+        //    $.post("addservice.php", {s:s},
+        //        function(response) {
+        //        //readresponse(response);
+        //        //alert(response);
+        //        });
+        //    window.location = 'agents.php';
+        //}
         
         function update_user(){
             var login = $("#txt_login").val();
