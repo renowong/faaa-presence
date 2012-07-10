@@ -77,7 +77,7 @@ include_once('menu.php');
             <td colspan="2">
             Edition
             <select id='slt_users' name='slt_users' onchange='load_user(this.value);'>
-                <option>Selectionner Agent</option>
+                <option>S&eacute;lectionner Agent</option>
                 <? print $users ?>
             </select>
             |
