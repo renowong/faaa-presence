@@ -43,7 +43,7 @@ function update($id,$login,$nom,$prenom,$password,$svc,$actif){
 function insert($login,$nom,$prenom,$password,$svc,$actif){
     $mysqli = new mysqli(DBSERVER, DBUSER, DBPWD, DB);
     ////set the query
-    $query = sprintf("INSERT INTO `users` (`userlogin`,`userlastname`,`userfirstname`,`userpassword`,`userservice`,`userisactive`) VALUES ('%s','%s','%s','%s','%s')"
+    $query = sprintf("INSERT INTO `users` (`userlogin`,`userlastname`,`userfirstname`,`userpassword`,`userservice`,`userisactive`) VALUES ('%s','%s','%s','%s','%s','%s')"
                      ,$login,$nom,$prenom,$password,$svc,$actif);
     $mysqli->query($query);
     $mysqli->close();
