@@ -47,6 +47,10 @@ table{
 	border: solid 2px black;
 }
 
+th,td{
+	padding:10px;
+}
+
 .td_presence {
 	border:dotted 1px #000;
 	vertical-align:top;
@@ -54,6 +58,7 @@ table{
 	font-size: 12px;
 	text-align:center;
 	width:1px;
+	padding:0px;
 }
 
 .td_names {
@@ -63,6 +68,7 @@ table{
 	border:dotted 1px #000;
 	width:1px;
 	border:0px;
+	padding:0px;
 }
 
 .tbl_presence {
