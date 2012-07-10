@@ -112,7 +112,7 @@ include_once('menu.php');
             <tr>
                     <td colspan="2">Editer
                         <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
-                            <option>Selectionner Agent</option>
+                            <option>S&eacute;lectionner Agent</option>
                             <? print $agents ?>
                         </select> | <button onclick='init_edit();'>RAZ</button>
                     </td>
