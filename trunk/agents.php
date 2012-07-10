@@ -49,7 +49,7 @@ include_once('menu.php');
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
             var actif;
-            if($("#chk_actif").attr("checked")=="checked"){actif=1;}else{actif=0;};
+            if($("#chk_actif").is(":checked")){actif=1;}else{actif=0;};
             
             $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc,actif:actif},
                 function(response) {
@@ -63,7 +63,9 @@ include_once('menu.php');
             $("#txt_nom").val('');
             $("#txt_prenom").val('');
             $("#editid").val('');
-            $("#slt_services option:eq(0)").attr("selected", "selected");
+            $("#slt_services option:eq(0)").prop("selected", "selected");
+            $("#slt_agents option:eq(0)").prop("selected", "selected");
+            $("#chk_actif").prop("checked","checked");
         }
         
         function load_agent(data){
@@ -72,16 +74,13 @@ include_once('menu.php');
             $("#editid").val(ar_data[0]);
             $("#txt_nom").val(ar_data[1]);
             $("#txt_prenom").val(ar_data[2]);
-            if(active==1){$("#chk_actif").attr("checked", true);}else{$("#chk_actif").attr("checked", false);}
-            //$('#slt_services')
-            //    .prepend($("<option></option>")
-            //    .attr("value",ar_data[3])
-            //    .text(ar_data[3]));
-            $("#slt_services option").each(function() {
-                if($(this).text() === ar_data[3]) {
-                  $(this).attr('selected', 'selected');            
-                }                        
-              });
+            if(active==1){$("#chk_actif").prop("checked", "checked");}else{$("#chk_actif").prop("checked", "");}
+            //$("#slt_services option").each(function() {
+            //    if($(this).text() === ar_data[3]) {
+            //      $(this).prop('selected', 'selected');            
+            //    }                        
+            //  });
+            $("#slt_services").val(ar_data[3]).prop("selected", "selected");
         }
     </script>
 </head><body>
