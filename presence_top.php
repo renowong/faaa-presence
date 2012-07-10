@@ -109,23 +109,4 @@ function WE($day,$month,$year){
     }
 }
 
-function getBrowserCss()
-    {
-        $u_agent = $_SERVER['HTTP_USER_AGENT'];
-        $css = '';
-        if(preg_match('/MSIE/i',$u_agent))
-        {
-            $css = "@import url(\"css/firefox.css\");";
-        }
-        elseif(preg_match('/Firefox/i',$u_agent))
-        {
-            $css = "@import url(\"css/firefox.css\");";
-        }
-        elseif(preg_match('/Chrome/i',$u_agent))
-        {
-            $css = "@import url(\"css/chrome.css\");";
-        }
-        return $css;
-    }
-
 ?>
