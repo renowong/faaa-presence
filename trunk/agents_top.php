@@ -10,7 +10,7 @@ function getservices(){
 	$query = sprintf("SELECT * FROM `services`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<span id='".$row->idservice."'>".$row->designation."</span><br/>";            
+        $output .= "<span id='".$row->idservice."'>".strtoupper($row->designation)."</span><br/>";            
         }
         $mysqli->close();
         

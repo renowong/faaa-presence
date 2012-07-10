@@ -6,7 +6,7 @@ include_once('menu.php');
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
-    <?php echo $title.$icon.$charset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss.$datetimepickerjs ?>
+    <?php echo $title.$icon.$charset.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss.$datetimepickerjs ?>
         <!-- jquery -->
         
         <script type="text/javascript">
@@ -59,19 +59,13 @@ include_once('menu.php');
 </head><body>
 <div name="message" id="message" ></div>
 <? print $menu ?>
-<table>
-    <tr>
-        <td>
-            <table class="form">
+            <table>
                 <th>Gestion des F&eacute;ri&eacute;s</th>
                 <tr>
                     <td>
                         Date: <input type="text" id="datepicker"> <button id="btn_ajouter">Ajouter</button></p>
                     </td>
                 </tr>
-            </table>
-            <hr/>
-            <table class="form">
                 <th>F&eacute;ri&eacute;s de cette ann&eacute;e</th>
                 <tr>
                     <td>
@@ -79,7 +73,4 @@ include_once('menu.php');
                         </td>
                 </tr>
             </table>
-        </td>
-    </tr>    
-</table>
 </body></html>

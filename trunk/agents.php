@@ -7,7 +7,7 @@ include_once('menu.php');
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
-    <?php echo $title.$icon.$charset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
+    <?php echo $title.$icon.$charset.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
 
         <!-- jquery -->
         <script type="text/javascript">
@@ -77,16 +77,13 @@ include_once('menu.php');
 <table>
     <tr>
         <td width='250px' style="vertical-align:top;">
-            <table class="form">
+            <table>
                 <th>Services</th>
             <tr>
                     <td>
-                        <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service'/> <button onclick='addsvc();'>Ajouter Service</button>
+                        <input type='text' size='10' maxlength='10' id='txt_service' name='txt_service' style='text-transform: uppercase;'/> <button onclick='addsvc();'>Ajouter Service</button>
                     </td>
                 </tr>
-            </table>
-            <hr/>
-            <table class="form">
                 <th>Liste des Services</th>
                 <tr>
                     <td>
@@ -98,24 +95,18 @@ include_once('menu.php');
             </table>
         </td>
         <td>
-            <table class="form">
-                <th>Gestion Agents</th>
+            <table>
+                <th colspan="2">Gestion Agents</th>
             <tr>
-                    <td>Edition
+                    <td colspan="2">Edition
                         <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
                             <option>Selectionner Agent</option>
                             <? print $agents ?>
                         </select> | <button onclick='init_edit();'>RAZ</button>
                     </td>
                 </tr>
-            </table>
-            <hr/>
-            <div id='editagent' width="100%">
-                <table class="form">
-                    <tr>
-                        <th colspan="2">Edition</th>
+                    <th colspan="2">Edition</th>
                        </tr>     
-                    <tr>
                         <td><input type='hidden' id='editid' name='editid'/>Compte Actif :</td>
                         <td><input type='checkbox' id='chk_actif' name='chk_actif' checked/></td>
                     </tr>

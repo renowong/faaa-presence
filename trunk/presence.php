@@ -255,11 +255,9 @@ include_once('menu.php');
 </form>
 <br>
     <table>
-        <tr>
-            <th colspan="2" style="padding:10px">
+            <th colspan="2">
                 Valeurs autoris&eacute;es
             </th>
-        </tr>
         <tr>
             <td style="padding:10px;">
                 HA : Heure arriv&eacute;e<br/>

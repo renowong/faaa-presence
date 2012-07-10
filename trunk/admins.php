@@ -7,7 +7,7 @@ include_once('menu.php');
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
-    <?php echo $title.$icon.$charset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
+    <?php echo $title.$icon.$charset.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
         <!-- jquery -->
         <script type="text/javascript">
         $(document).ready(function () {
@@ -77,61 +77,48 @@ include_once('menu.php');
 </head><body>
 <div name="message" id="message" ></div>
 <? print $menu ?>
-<table class="gestion">
-    <tr>
-        <td>
-            <table class="form">
-                <th>Gestion Agents</th>
-                <tr>
-                    <td>
-                    Edition
-                    <select id='slt_users' name='slt_users' onchange='load_user(this.value);'>
-                        <option>Selectionner Agent</option>
-                        <? print $users ?>
-                    </select>
-                    |
-                    <button onclick='init_edit();'>RAZ</button>
-                    </td>
-                </tr>
-            </table>
-            <hr/>
-            <div id='editagent'>
-                <table class="form">
-                    <th colspan="2">Edition</th>
-                    <tr>
-                        <td colspan="2"><input type='hidden' id='editid' name='editid'/>
-                        Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Login :</td>
-                        <td><input type='text' id='txt_login' name='txt_login' style='text-transform:lowercase;' /></td>
-                    </tr>
-                    <tr>
-                        <td>Nom :</td>
-                        <td><input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;' /></td>
-                    </tr>
-                    <tr>
-                        <td>Pr&eacute;nom :</td>
-                        <td><input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /></td>
-                    </tr>
-                    <tr>
-                        <td>Mot de passe :</td>
-                        <td><input type='text' id='txt_password' name='txt_password' />
-                        <br/><span class="note">Laisser vide pour garder l'ancien mot de passe</span></td>
-                    </tr>
-                    <tr>
-                        <td>Service :</td>
-                        <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
-                    </tr>
-                    <tr><td colspan="2"><button onclick='update_user();'>Ajouter / Mettre &agrave; jour</button></td>
-                    </tr>
-                </table>
-
-                
-            </div>
-        </td>
-    </tr>
-</table>
-    
+    <table>
+        <th colspan="2">Gestion Agents</th>
+        <tr>
+            <td colspan="2">
+            Edition
+            <select id='slt_users' name='slt_users' onchange='load_user(this.value);'>
+                <option>Selectionner Agent</option>
+                <? print $users ?>
+            </select>
+            |
+            <button onclick='init_edit();'>RAZ</button>
+            </td>
+        </tr>
+          
+            <th colspan="2">Edition</th>
+            <tr>
+                <td colspan="2"><input type='hidden' id='editid' name='editid'/>
+                Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/>
+                </td>
+            </tr>
+            <tr>
+                <td>Login :</td>
+                <td><input type='text' id='txt_login' name='txt_login' style='text-transform:lowercase;' /></td>
+            </tr>
+            <tr>
+                <td>Nom :</td>
+                <td><input type='text' id='txt_nom' name='txt_nom' style='text-transform:uppercase;' /></td>
+            </tr>
+            <tr>
+                <td>Pr&eacute;nom :</td>
+                <td><input type='text' id='txt_prenom' name='txt_prenom' style='text-transform:capitalize;' /></td>
+            </tr>
+            <tr>
+                <td>Mot de passe :</td>
+                <td><input type='text' id='txt_password' name='txt_password' />
+                <br/><span class="note">Laisser vide pour garder l'ancien mot de passe</span></td>
+            </tr>
+            <tr>
+                <td>Service :</td>
+                <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
+            </tr>
+            <tr><td colspan="2"><button onclick='update_user();'>Ajouter / Mettre &agrave; jour</button></td>
+        </tr>
+    </table>
 </body></html>
