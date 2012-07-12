@@ -1,7 +1,8 @@
 <?php
-include_once('config.php');
+if($_COOKIE['user']==''){header("Location: index.php");}
+if(!$_COOKIE['isadmin']){header("Location: index.php");}
+
 include_once('headers.php');
-include_once('agents_top.php');
 include_once('menu.php');
 ?>
 
@@ -12,14 +13,46 @@ include_once('menu.php');
         <!-- jquery -->
         <script type="text/javascript">
         $(document).ready(function () {
-        
+        getlist("slt_agents");
+        getlist("slt_services");
+        getlist("list_services");
         $( "input:submit, button" ).button();
         });
+        
+        function getlist(t){
+            $.post("agents_functions.php", {list:t},
+                function(response) {
+                //alert(response);
+                var obj = jQuery.parseJSON(response);
+                var count = obj.length-1;
+                $("#"+t).empty();
+
+                switch(t){
+                    case "slt_agents":
+                        $("#"+t).append('<option>S\351lectionner Agent</option>');
+                        for(i=0;i<=count;i++){
+                            $("#"+t).append('<option value='+obj[i].agentid+'_'+obj[i].nom+'_'+obj[i].prenom+'_'+obj[i].service.toUpperCase()+'_'+obj[i].active+'>'+obj[i].nom.toUpperCase()+' '+obj[i].prenom+' ('+obj[i].service+')</option>');
+                        }
+                    break;
+                    case "slt_services":
+                        for(i=0;i<=count;i++){
+                            $("#"+t).append('<option value='+obj[i].designation.toUpperCase()+'>'+obj[i].designation.toUpperCase()+'</option>');
+                        }
+                    break;
+                    case "list_services":
+                        for(i=0;i<=count;i++){
+                            $("#"+t).append("<span id='"+obj[i].idservice+"'>"+obj[i].designation.toUpperCase()+"</span><a href='javascript:deletesvc("+obj[i].idservice+");'><img src='img/trash.png'/></a><br/>");
+                        }
+                    break;
+                }
+                
+            });
+        }
         
         function addsvc(){
             var newsvc = $("#txt_service").val();
             if (newsvc=='') {
-                message("aucune entr\351e!");
+                message("Aucune entr\351e!");
             }else{
                 sendsvc(newsvc);
             }
@@ -29,18 +62,18 @@ include_once('menu.php');
             $.post("addservice.php", {s:s,t:"insert"},
                 function(response) {
                 //readresponse(response);
-                //alert(response);
+                getlist("list_services");
+                getlist("slt_services");
                 });
-            window.location = 'agents.php';
         }
         
         function deletesvc(s){
             $.post("addservice.php", {s:s,t:"delete"},
                 function(response) {
                 //readresponse(response);
-                //alert(response);
+                getlist("list_services");
+                getlist("slt_services");
                 });
-            window.location = 'agents.php';
         }
         
         function update_agent(){
@@ -54,9 +87,11 @@ include_once('menu.php');
             $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc,actif:actif},
                 function(response) {
                 //readresponse(response);
-                //alert(response);
+                message("Ajout/Mise \340 effectu\351e");
+                getlist("slt_services");
+                getlist("slt_agents");
+                init_edit();
                 });
-            window.location = 'agents.php';
         }
         
         function init_edit(){
@@ -75,11 +110,6 @@ include_once('menu.php');
             $("#txt_nom").val(ar_data[1]);
             $("#txt_prenom").val(ar_data[2]);
             if(active==1){$("#chk_actif").prop("checked", "checked");}else{$("#chk_actif").prop("checked", "");}
-            //$("#slt_services option").each(function() {
-            //    if($(this).text() === ar_data[3]) {
-            //      $(this).prop('selected', 'selected');            
-            //    }                        
-            //  });
             $("#slt_services").val(ar_data[3]).prop("selected", "selected");
         }
     </script>
@@ -100,7 +130,6 @@ include_once('menu.php');
                 <tr>
                     <td>
                         <div id="list_services">
-                        <? print $services ?>
                         </div>
                     </td>
                 </tr>
@@ -113,7 +142,6 @@ include_once('menu.php');
                     <td colspan="2">Editer
                         <select id='slt_agents' name='slt_agents' onchange='load_agent(this.value);'>
                             <option>S&eacute;lectionner Agent</option>
-                            <? print $agents ?>
                         </select> | <button onclick='init_edit();'>RAZ</button>
                     </td>
                 </tr>
@@ -132,7 +160,7 @@ include_once('menu.php');
                     </tr>
                     <tr>
                         <td>Service :</td>
-                        <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
+                        <td><select id='slt_services' name='slt_services'></select></td>
                     </tr>
                     <tr>
                         <td colspan="2"><button onclick='update_agent();'>Ajouter / Mettre &agrave; jour</button></td>
