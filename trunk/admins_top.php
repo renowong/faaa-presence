@@ -1,5 +1,6 @@
 <?php
 if($_COOKIE['user']==''){header("Location: index.php");}
+if(!$_COOKIE['isadmin']){header("Location: index.php");}
 
 $lst_services = getlist_services();
 $users = getusers();

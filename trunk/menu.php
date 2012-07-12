@@ -1,12 +1,16 @@
 <?php
+
+$isadmin = $_COOKIE['isadmin'];
 $menu="<div class=\"horizontalcssmenu\">".
 "<ul id=\"cssmenu1\">".
 "<li style=\"border-left: 1px solid #202020;\"><a href=\"index.php?logout=1\">Quitter</a></li>".
-"<li><a href=\"presence.php\" >Pr&eacute;sences</a></li>".
-"<li><a href=\"agents.php\" >Gestion des Agents</a></li>".
-"<li><a href=\"ferie.php\" >Gestion des F&eacute;ri&eacute;s</a></li>".
-"<li><a href=\"admins.php\" >Gestion des Acc&egrave;s</a></li>".
-"<br style=\"clear: left;\" /><br/>".
+"<li><a href=\"presence.php\" >Pr&eacute;sences</a></li>";
+if($isadmin){
+    $menu.="<li><a href=\"agents.php\" >Gestion des Agents</a></li>".
+    "<li><a href=\"ferie.php\" >Gestion des F&eacute;ri&eacute;s</a></li>".
+    "<li><a href=\"admins.php\" >Gestion des Acc&egrave;s</a></li>";
+}
+$menu.="<br style=\"clear: left;\" /><br/>".
 "</div>";
 
 ### Example ###

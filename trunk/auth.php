@@ -31,7 +31,9 @@ function query() {
 				"<password>" . $row->userpassword . "</password>".
 				"<nom>" . $row->userlastname . "</nom>".
 				"<prenom>" . $row->userfirstname . "</prenom>".
-				"<svc>" . $row->userservice . "</svc></user>";
+				"<svc>" . $row->userservice . "</svc>".
+				"<isadmin>" . $row->userisadmin . "</isadmin>".
+				"</user>";
 			}
 		} else {
 			echo $mysqli->error;
