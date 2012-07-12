@@ -1,7 +1,9 @@
 <?php
-include_once('config.php');
+if($_COOKIE['user']==''){header("Location: index.php");}
+if(!$_COOKIE['isadmin']){header("Location: index.php");}
+
 include_once('headers.php');
-include_once('admins_top.php');
+//include_once('admins_top.php');
 include_once('menu.php');
 ?>
 
@@ -13,7 +15,34 @@ include_once('menu.php');
         $(document).ready(function () {
         
         $( "input:submit, button" ).button();
+        getlist("slt_services");
+        getlist("slt_users");
         });
+        
+        function getlist(t){
+            $.post("admins_functions.php", {list:t},
+                function(response) {
+                //alert(response);
+                var obj = jQuery.parseJSON(response);
+                var count = obj.length-1;
+                $("#"+t).empty();
+
+                switch(t){
+                    case "slt_services":
+                        for(i=0;i<=count;i++){
+                            $("#"+t).append('<option value='+obj[i].designation.toUpperCase()+'>'+obj[i].designation.toUpperCase()+'</option>');
+                        }
+                    break;
+                    case "slt_users":
+                        $("#"+t).append('<option>S\351lectionner Agent</option>');
+                        for(i=0;i<=count;i++){
+                            $("#"+t).append('<option value='+obj[i].userid+'_'+obj[i].userlogin+'_'+obj[i].userlastname+'_'+obj[i].userfirstname+'_'+obj[i].userservice.toUpperCase()+'_'+obj[i].userisactive+'>'+obj[i].userlastname.toUpperCase()+' '+obj[i].userfirstname+' ('+obj[i].userlogin+')</option>');
+                        }
+                    break;
+                }
+                
+            });
+        }
         
        
         function update_user(){
@@ -36,10 +65,10 @@ include_once('menu.php');
                 function(response) {
                 //readresponse(response);
                 message("Ajout/Mise \340 effectu\351e");
+                getlist("slt_services");
+                getlist("slt_users");
                 });
-                //window.location = 'admins.php';
             }
-            
         }
         
         function init_edit(){
@@ -62,11 +91,6 @@ include_once('menu.php');
             $("#txt_nom").val(ar_data[2]);
             $("#txt_prenom").val(ar_data[3]);
             if(active==1){$("#chk_actif").prop("checked", true);}else{$("#chk_actif").prop("checked", false);}
-            //$("#slt_services option").each(function() {
-            //    if($(this).text() === ar_data[4]) {
-            //      $(this).prop('selected', 'selected');            
-            //    }                        
-            //});
             $("#slt_services").val(ar_data[4]).prop("selected", "selected");
             $("#labelinputs").html("Edition d'un compte");
             $("#btn_validate").button("option","label","Mettre &agrave; jour");
@@ -81,8 +105,6 @@ include_once('menu.php');
             <td colspan="2">
             Edition
             <select id='slt_users' name='slt_users' onchange='load_user(this.value);'>
-                <option>S&eacute;lectionner Agent</option>
-                <? print $users ?>
             </select>
             |
             <button onclick='init_edit();'>RAZ</button>
