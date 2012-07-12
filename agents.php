@@ -1,6 +1,5 @@
 <?php
-if($_COOKIE['user']==''){header("Location: index.php");}
-if(!$_COOKIE['isadmin']){header("Location: index.php");}
+if($_COOKIE['user']=='' || !$_COOKIE['isadmin']){header("Location: index.php");}
 
 include_once('headers.php');
 include_once('menu.php');
