@@ -35,9 +35,9 @@ include_once('menu.php');
                 $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,password:password,svc:svc,actif:actif},
                 function(response) {
                 //readresponse(response);
-                //alert(response);
+                message("Ajout/Mise \340 effectu\351e");
                 });
-                window.location = 'admins.php';
+                //window.location = 'admins.php';
             }
             
         }
@@ -50,6 +50,8 @@ include_once('menu.php');
             $("#slt_services option:eq(0)").prop("selected", "selected");
             $("#slt_users option:eq(0)").prop("selected", "selected");
             $("#chk_actif").prop("checked","checked");
+            $("#labelinputs").html("Ajouter un utilisateur");
+            $("#btn_validate").button("option","label","Ajouter");
         }
         
         function load_user(data){
@@ -66,6 +68,8 @@ include_once('menu.php');
             //    }                        
             //});
             $("#slt_services").val(ar_data[4]).prop("selected", "selected");
+            $("#labelinputs").html("Edition d'un compte");
+            $("#btn_validate").button("option","label","Mettre &agrave; jour");
         }
     </script>
 </head><body>
@@ -85,7 +89,7 @@ include_once('menu.php');
             </td>
         </tr>
           
-            <th colspan="2">Edition</th>
+            <th colspan="2"><div id="labelinputs">Ajouter un utilisateur</div></th>
             <tr>
                 <td colspan="2"><input type='hidden' id='editid' name='editid'/>
                 Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/>
@@ -112,7 +116,7 @@ include_once('menu.php');
                 <td>Service :</td>
                 <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
             </tr>
-            <tr><td colspan="2"><button onclick='update_user();'>Ajouter / Mettre &agrave; jour</button></td>
+            <tr><td colspan="2"><button id="btn_validate" onclick='update_user();'>Ajouter</button></td>
         </tr>
     </table>
 </body></html>
