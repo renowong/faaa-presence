@@ -25,7 +25,7 @@ function getusers(){
 	$query = sprintf("SELECT * FROM `users` ORDER BY `userlastname`");
 	$result = $mysqli->query($query);
         while($row = $result->fetch_object()){
-        $output .= "<option value='".$row->userid."_".$row->userlogin."_".$row->userlastname."_".$row->userfirstname."_".strtoupper($row->userservice)."_".$row->userisactive."'>".$row->userlastname." ".$row->userfirstname." (".$row->userlogin.")</option><br/>";            
+        $output .= "<option value='".$row->userid."_".$row->userlogin."_".$row->userlastname."_".$row->userfirstname."_".strtoupper($row->userservice)."_".$row->userisactive."'>".strtoupper($row->userlastname)." ".ucfirst(strtolower($row->userfirstname))." (".$row->userlogin.")</option><br/>";            
         }
         $mysqli->close();
         
