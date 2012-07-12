@@ -68,6 +68,7 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 			    var nom = $(this).find("nom").text();
 			    var prenom = $(this).find("prenom").text();
 			    var svc = $(this).find("svc").text();
+			    var isadmin = $(this).find("isadmin").text();
 			    //alert(svc);
 			    if(access=="OK"){
 				//alert("access ok");
@@ -83,6 +84,7 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 				document.cookie = "prenom="+prenom;
 				document.cookie = "login="+login;
 				document.cookie = "svc="+svc;
+				document.cookie = "isadmin="+isadmin;
 				window.location = "presence.php";
 			    }else{
 				message(access);
