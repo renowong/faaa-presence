@@ -104,6 +104,8 @@ include_once('menu.php');
             $("#slt_services option:eq(0)").prop("selected", "selected");
             $("#slt_agents option:eq(0)").prop("selected", "selected");
             $("#chk_actif").prop("checked","checked");
+            $("#title_th").html("Ajouter");
+            $("#btn_update").button("option","label","Ajouter");
         }
         
         function load_agent(data){
@@ -114,6 +116,8 @@ include_once('menu.php');
             $("#txt_prenom").val(ar_data[2]);
             if(active==1){$("#chk_actif").prop("checked", "checked");}else{$("#chk_actif").prop("checked", "");}
             $("#slt_services").val(ar_data[3]).prop("selected", "selected");
+            $("#title_th").html("Editer");
+            $("#btn_update").button("option","label","Mettre &agrave; jour");
         }
     </script>
 </head><body>
@@ -148,7 +152,7 @@ include_once('menu.php');
                         </select> | <button onclick='init_edit();'>RAZ</button>
                     </td>
                 </tr>
-                    <th colspan="2">Edition</th>
+                    <th colspan="2"><div id="title_th">Ajouter</div></th>
                        </tr>     
                         <td><input type='hidden' id='editid' name='editid'/>Compte Actif :</td>
                         <td><input type='checkbox' id='chk_actif' name='chk_actif' checked/></td>
@@ -166,7 +170,7 @@ include_once('menu.php');
                         <td><select id='slt_services' name='slt_services'></select></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button onclick='update_agent();'>Ajouter / Mettre &agrave; jour</button></td>
+                        <td colspan="2"><button id='btn_update' onclick='update_agent();'>Ajouter</button></td>
                     </tr>
                 </table>
                 
