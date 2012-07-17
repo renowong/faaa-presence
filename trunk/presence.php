@@ -82,9 +82,9 @@ include_once('menu.php');
             var pattern = /^[2-9]$/;
             if(pattern.test(ffvalue)){fvalue="0"+fvalue;$("#"+fname).val(fvalue);}
             
-            
+            //alert(fname.substring(1));
             //if(fvalue!=""){
-                if(checkvalid(fvalue)){
+                if(checkvalid(fvalue) && checksequence(fname)){
                     //$("#"+fname).prop("readonly","readonly");
                     $.post("update.php", {year:edityear,month:editmonth,day:editday,type:type,value:fvalue,agentid:agentid},
                             function(response) {
@@ -99,11 +99,35 @@ include_once('menu.php');
             //}
         }
         
+        function checksequence(h){
+            var f_ha = "ha"+h.substring(2);
+            var f_hd = "hd"+h.substring(2);
+            var ha = $("#"+f_ha).val();
+            var hd = $("#"+f_hd).val();
+            //alert(hd);            
+            if(ha.length<=2 || hd.length<=2){
+                return true;
+            }else{
+                var ar_ha = ha.split(":");
+                var ar_hd = hd.split(":");
+                var num_a = ar_ha[0]*1;
+                var num_d = ar_hd[0]*1;
+                if(num_a<=num_d){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+        
         function checkvalid(input){
             var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
             var pattern2 = /^(CP|AB|AM|CM|AT|CF|FO|F)?$/i;
             if(pattern.test(input) || pattern2.test(input)){
-                return true;}else{return false;}
+                return true;
+            }else{
+                return false;
+            }
         }
         
         function calc(field){
