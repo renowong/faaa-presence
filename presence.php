@@ -101,14 +101,14 @@ include_once('menu.php');
         
         function checkvalid(input){
             var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            var pattern2 = /^(CP|AB|AM|CM|AT|CF|F)?$/i;
+            var pattern2 = /^(CP|AB|AM|CM|AT|CF|FO|F)?$/i;
             if(pattern.test(input) || pattern2.test(input)){
                 return true;}else{return false;}
         }
         
         function calc(field){
             var pattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            var pattern2 = /^(CP|AM|CM|AT|CF)$/i;
+            var pattern2 = /^(CP|AM|CM|AT|CF|FO)$/i;
             var suffix = field.substring(2);
             var ha = $("#ha"+suffix).val();
             var hd = $("#hd"+suffix).val();
@@ -261,16 +261,15 @@ include_once('menu.php');
             </th>
         <tr>
             <td style="padding:10px;">
-                HA : Heure arriv&eacute;e<br/>
-                HD : Heure d&eacute;part<br/>
                 AB : Absence<br/>
-                CP : Cong&eacute;s pay&eacute;s
-            </td>
-            <td style="padding:10px;">
+                CP : Cong&eacute;s pay&eacute;s<br/>
                 AM : Arr&ecirc;t maladie<br/>
                 CM : Cong&eacute;s maternit&eacute;<br/>
+            </td>
+            <td style="padding:10px;">
                 AT : Accident de travail<br/>
-                CF : Cong&eacute;s pour &eacute;v&eacute;nements familiaux
+                CF : Cong&eacute;s pour &eacute;v&eacute;nements familiaux<br/>
+                FO : Formation
             </td>
         </tr>
     </table>
