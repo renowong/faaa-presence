@@ -256,8 +256,11 @@ include_once('menu.php');
 </div>
 <br>
     <table>
-            <th colspan="2">
+            <th colspan="2" style="border-right:solid 2px black;">
                 Valeurs autoris&eacute;es
+            </th>
+            <th>
+                L&eacute;gende
             </th>
         <tr>
             <td style="padding:10px;">
@@ -270,6 +273,10 @@ include_once('menu.php');
                 AT : Accident de travail<br/>
                 CF : Cong&eacute;s pour &eacute;v&eacute;nements familiaux<br/>
                 FO : Formation
+            </td>
+            <td style="padding:10px;">
+                HA : Heure d'arriv&eacute;e<br/>
+                HD : Heure de d&eacute;part
             </td>
         </tr>
     </table>

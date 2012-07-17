@@ -46,6 +46,7 @@ table{
 	padding:15px;
 	font-size: 12px;
 	border: solid 2px black;
+	border-collapse:collapse;
 }
 
 th,td{
