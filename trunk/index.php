@@ -39,7 +39,7 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 						reset();
 					}
 				},
-				beforeclose : function() { return false; }
+				beforeclose : function() { window.close(); }
 			});
 			$('#login').focus();
 		});
