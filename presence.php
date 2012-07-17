@@ -78,6 +78,11 @@ include_once('menu.php');
             var agentid = arr[1];
             var editday = arr[2];
             
+            var ffvalue = fvalue.substring(0,1);
+            var pattern = /^[2-9]$/;
+            if(pattern.test(ffvalue)){fvalue="0"+fvalue;$("#"+fname).val(fvalue);}
+            
+            
             //if(fvalue!=""){
                 if(checkvalid(fvalue)){
                     //$("#"+fname).prop("readonly","readonly");
