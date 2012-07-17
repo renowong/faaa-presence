@@ -137,7 +137,7 @@ include_once('menu.php');
                 <td>Service :</td>
                 <td><select id='slt_services' name='slt_services'><? print $lst_services ?></select></td>
             </tr>
-            <tr><td colspan="2"><button id="btn_validate" onclick='update_user();'>Ajouter</button></td>
+            <tr><td colspan="2" style="text-align:right;"><button id="btn_validate" onclick='update_user();'>Ajouter</button></td>
         </tr>
     </table>
 </body></html>
