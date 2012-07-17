@@ -170,7 +170,7 @@ include_once('menu.php');
                         <td><select id='slt_services' name='slt_services'></select></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button id='btn_update' onclick='update_agent();'>Ajouter</button></td>
+                        <td colspan="2" style="text-align:right;"><button id='btn_update' onclick='update_agent();'>Ajouter</button></td>
                     </tr>
                 </table>
                 
