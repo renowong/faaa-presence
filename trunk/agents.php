@@ -83,7 +83,10 @@ include_once('menu.php');
             var actif;
             if($("#chk_actif").is(":checked")){actif=1;}else{actif=0;};
             
-            $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc,actif:actif},
+            if(nom=="" || prenom==""){
+                message("Veuillez compl\351ter le nom et le pr\351nom!");
+            }else{
+                 $.post("add_edit_agents.php", {id:id,nom:nom,prenom:prenom,svc:svc,actif:actif},
                 function(response) {
                 //readresponse(response);
                 message("Ajout/Mise \340 effectu\351e");
@@ -91,6 +94,7 @@ include_once('menu.php');
                 getlist("slt_agents");
                 init_edit();
                 });
+            }
         }
         
         function init_edit(){
