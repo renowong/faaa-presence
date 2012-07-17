@@ -64,7 +64,7 @@ include_once('menu.php');
                 function(response) {
                 //readresponse(response);
                 message("Ajout/Mise \340 effectu\351e");
-                getlist("slt_services");
+
                 getlist("slt_users");
                 });
             }
