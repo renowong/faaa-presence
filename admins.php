@@ -33,7 +33,7 @@ include_once('menu.php');
                         }
                     break;
                     case "slt_users":
-                        $("#"+t).append('<option>S\351lectionner Agent</option>');
+                        $("#"+t).append('<option value="0">S\351lectionner Agent</option>');
                         for(i=0;i<=count;i++){
                             $("#"+t).append('<option value='+obj[i].userid+'_'+obj[i].userlogin+'_'+obj[i].userlastname+'_'+obj[i].userfirstname+'_'+obj[i].userservice.toUpperCase()+'_'+obj[i].userisactive+'_'+obj[i].userisadmin+'>'+obj[i].userlastname.toUpperCase()+' '+obj[i].userfirstname+' ('+obj[i].userlogin+')</option>');
                         }
@@ -86,6 +86,7 @@ include_once('menu.php');
         }
         
         function load_user(data){
+            if(data=="0"){init_edit();return false;}
             var ar_data = data.split("_");
             var active = ar_data[5];
             var admin = ar_data[6];
