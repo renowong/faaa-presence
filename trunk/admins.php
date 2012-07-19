@@ -35,7 +35,7 @@ include_once('menu.php');
                     case "slt_users":
                         $("#"+t).append('<option>S\351lectionner Agent</option>');
                         for(i=0;i<=count;i++){
-                            $("#"+t).append('<option value='+obj[i].userid+'_'+obj[i].userlogin+'_'+obj[i].userlastname+'_'+obj[i].userfirstname+'_'+obj[i].userservice.toUpperCase()+'_'+obj[i].userisactive+'>'+obj[i].userlastname.toUpperCase()+' '+obj[i].userfirstname+' ('+obj[i].userlogin+')</option>');
+                            $("#"+t).append('<option value='+obj[i].userid+'_'+obj[i].userlogin+'_'+obj[i].userlastname+'_'+obj[i].userfirstname+'_'+obj[i].userservice.toUpperCase()+'_'+obj[i].userisactive+'_'+obj[i].userisadmin+'>'+obj[i].userlastname.toUpperCase()+' '+obj[i].userfirstname+' ('+obj[i].userlogin+')</option>');
                         }
                     break;
                 }
@@ -53,14 +53,16 @@ include_once('menu.php');
             var id = $("#editid").val();
             var svc = $("#slt_services").val();
             var actif;
+            var admin;
             if($("#chk_actif").is(":checked")){actif=1;}else{actif=0;};
+            if($("#chk_admin").is(":checked")){admin=1;}else{admin=0;};
             if(id.length==0 && password.length==0){message("Veuillez entrer un mot de passe");checklist=false;$("#txt_password").focus();}
             if(prenom.length==0){message("Veuillez entrer un pr\351nom");checklist=false;$("#txt_prenom").focus();}
             if(nom.length==0){message("Veuillez entrer un nom");checklist=false;$("#txt_nom").focus();}
             if(login.length==0){message("Veuillez entrer un login");checklist=false;$("#txt_login").focus();}
 
             if(checklist){
-                $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,password:password,svc:svc,actif:actif},
+                $.post("add_edit_users.php", {id:id,login:login,nom:nom,prenom:prenom,password:password,svc:svc,actif:actif,admin:admin},
                 function(response) {
                 //readresponse(response);
                 message("Ajout/Mise \340 effectu\351e");
@@ -78,6 +80,7 @@ include_once('menu.php');
             $("#slt_services option:eq(0)").prop("selected", "selected");
             $("#slt_users option:eq(0)").prop("selected", "selected");
             $("#chk_actif").prop("checked","checked");
+            $("#chk_admin").prop("checked","");
             $("#labelinputs").html("Ajouter un utilisateur");
             $("#btn_validate").button("option","label","Ajouter");
         }
@@ -85,11 +88,13 @@ include_once('menu.php');
         function load_user(data){
             var ar_data = data.split("_");
             var active = ar_data[5];
+            var admin = ar_data[6];
             $("#editid").val(ar_data[0]);
             $("#txt_login").val(ar_data[1]);
             $("#txt_nom").val(ar_data[2]);
             $("#txt_prenom").val(ar_data[3]);
             if(active==1){$("#chk_actif").prop("checked", true);}else{$("#chk_actif").prop("checked", false);}
+            if(admin==1){$("#chk_admin").prop("checked", true);}else{$("#chk_admin").prop("checked", false);}
             $("#slt_services").val(ar_data[4]).prop("selected", "selected");
             $("#labelinputs").html("Edition d'un compte");
             $("#btn_validate").button("option","label","Mettre &agrave; jour");
@@ -112,8 +117,11 @@ include_once('menu.php');
           
             <th colspan="2"><div id="labelinputs">Ajouter un utilisateur</div></th>
             <tr>
-                <td colspan="2"><input type='hidden' id='editid' name='editid'/>
+                <td><input type='hidden' id='editid' name='editid'/>
                 Compte Actif : <input type='checkbox' id='chk_actif' name='chk_actif' checked/>
+                </td>
+                <td>
+                Admin : <input type='checkbox' id='chk_admin' name='chk_admin'/>
                 </td>
             </tr>
             <tr>
