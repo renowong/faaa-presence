@@ -12,7 +12,7 @@ include_once('menu.php');
         <!-- jquery -->
         <script type="text/javascript">
         $(document).ready(function () {
-        
+        //alert(document.cookie);
         //load data
         var ids = $("#agentsids").val();
         var ar_ids = ids.split("|");

@@ -78,14 +78,15 @@ if($_COOKIE['user']>0){header("Location: presence.php");}
 				
 				var expires_date = new Date( today.getTime() + (expires) );
 				
-				document.cookie = "user="+id+";expires=" + expires_date.toGMTString();
+				document.cookie = "user="+id;
 				//alert(today.toGMTString());
 				//alert("user="+id+";expires=" + expires_date.toGMTString());
-				document.cookie = "nom="+nom+";expires=" + expires_date.toGMTString();
-				document.cookie = "prenom="+prenom+";expires=" + expires_date.toGMTString();
-				document.cookie = "login="+login+";expires=" + expires_date.toGMTString();
-				document.cookie = "svc="+svc+";expires=" + expires_date.toGMTString();
-				document.cookie = "isadmin="+isadmin+";expires=" + expires_date.toGMTString();
+				document.cookie = "nom="+nom;
+				document.cookie = "prenom="+prenom;
+				document.cookie = "login="+login;
+				document.cookie = "svc="+svc;
+				document.cookie = "isadmin="+isadmin;
+				document.cookie = "expires=" + expires_date.toGMTString();
 				window.location = "presence.php";
 			    }else{
 				message(access);
