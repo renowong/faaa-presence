@@ -8,7 +8,7 @@ include_once('menu.php');
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
 <link rel='stylesheet' type='text/css' href='css/cssreset.css' />
-    <?php echo $title.$icon.$charset.$nocache.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss ?>
+    <?php echo $title.$icon.$charset.$nocache.$cssreset.$defaultcss.$jquery.$jqueryui.$message_div.$menucss.$graburljs ?>
         <!-- jquery -->
         <script type="text/javascript">
         $(document).ready(function () {
@@ -65,7 +65,8 @@ include_once('menu.php');
         function loaddate(){
             var month = $("#slt_month").val();
             var year = $("#slt_annee").val();
-            window.location = "presence.php?load=true&month="+month+"&year="+year;
+            var showall = gup('showall');
+            window.location = "presence.php?load=true&month="+month+"&year="+year+"&showall="+showall;
         }
         
         function update(field){
