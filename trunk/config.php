@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set("Pacific/Tahiti");
 $titre="Presence";
-$dbserver="192.168.0.4";
+$dbserver="localhost";
 $db="presence";
 $dbuser="presence";
 $dbpwd="presence";
