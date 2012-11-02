@@ -10,4 +10,5 @@ $jquery="\t\t<script type='text/javascript' src='js/jquery-1.7.2.min.js'></scrip
 $message_div="\t\t<script type='text/javascript' src='js/message.js'></script>\n";
 $jqueryui="\t\t<link type='text/css' href='css/custom-theme/jquery-ui-1.8.21.custom.css' rel='stylesheet' />\n\t\t<script type='text/javascript' src='js/jquery-ui-1.8.21.custom.min.js'></script>\n";
 $datetimepickerjs="\t\t<script type='text/javascript' src='js/jquery.ui.datepicker-fr.js'></script>\n";
+$graburljs="\t\t<script type='text/javascript' src='js/graburlvalues.js'></script>\n";
 ?>
