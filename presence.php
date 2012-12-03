@@ -161,6 +161,11 @@ include_once('menu.php');
             total(suffix);
         }
         
+        function inputdots(field){
+            //alert(field.value.length);
+            if(field.value.length == 2) {field.value = field.value+":";}
+        }
+        
         function total(suffix){
             var id = suffix.substring(1);
             var explode = id.split("_");

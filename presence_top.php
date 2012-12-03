@@ -88,12 +88,12 @@ function buildcol($input,$id,$month,$year,$prenom,$nom){
             break;
             case "hd":
                 print "<td  class=\"td_presence\" style=\"$green$grey\">";
-                if(!WE($i,$month,$year)) print "<input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" title=\"".$prenom." ".$nom." HD\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"hd_".$id."_".$i."\" id=\"hd_".$id."_".$i."\" onKeyUp=\"inputdots(this);\" onBlur=\"update(this);calc(this.name);\" title=\"".$prenom." ".$nom." HD\" />";
                 print "</td>";
             break;
             case "ha":
                 print "<td  class=\"td_presence\" style=\"$green$grey\">";
-                if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onBlur=\"update(this);calc(this.name);\" title=\"".$prenom." ".$nom." HA\" />";
+                if(!WE($i,$month,$year)) print "<input type=\"hidden\" name=\"tt_".$id."_".$i."\" id=\"tt_".$id."_".$i."\"><input type=\"text\" class=\"uppercase\" size=\"4\" maxlength=\"5\" name=\"ha_".$id."_".$i."\" id=\"ha_".$id."_".$i."\" onKeyUp=\"inputdots(this);\" onBlur=\"update(this);calc(this.name);\" title=\"".$prenom." ".$nom." HA\" />";
                 print "</td>";
             break;
         }
