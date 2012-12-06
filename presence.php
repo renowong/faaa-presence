@@ -163,7 +163,7 @@ include_once('menu.php');
         
         function inputdots(field){
             //alert(field.value.length);
-            if(field.value.length == 2) {field.value = field.value+":";}
+            if(field.value.length == 2 && !isNaN(field.value)) {field.value = field.value+":";}
         }
         
         function total(suffix){
