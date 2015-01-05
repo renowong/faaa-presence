@@ -40,8 +40,8 @@ function buildmonths($s){
 }
 
 function buildyears($s){
-    $ar_year = array(2012=>'2012',2013=>'2013',2014=>'2014');
-    for ($i=2012;$i<=2014;$i++){
+    $ar_year = array(2012=>'2012',2013=>'2013',2014=>'2014',2015=>'2015',2016=>'2016',2017=>'2017',2018=>'2018',2019=>'2019',2020=>'2020');
+    for ($i=2012;$i<=2020;$i++){
         if($s==$i){$select=" selected";}else{$select="";}
         $output .= "<option value=\"".$i."\"$select>".$ar_year[$i]."</option>";
     }
